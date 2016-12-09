@@ -20,6 +20,11 @@ layout: default
     {{ content }}
   </div>
 
+  {% endif %}
+
+{% if site.intensedebate_comments %}
+  {% include intensedebate-comments.html %}
+  {% endif %}
   <footer class="postNavigation">
   {% if page.previous.url %}
     <a class="postPrev" href="{{page.previous.url}}">
@@ -30,11 +35,6 @@ layout: default
     <a class="postNext" href="{{page.next.url}}">
         {{page.next.title}} &raquo;
     </a>
-  {% endif %}
-  
-  {% if site.intensedebate_comments %}
-  {% include intensedebate-comments.html %}
-  {% endif %}
   </footer>
 
 
