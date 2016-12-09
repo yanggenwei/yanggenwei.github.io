@@ -31,6 +31,10 @@ layout: default
         {{page.next.title}} &raquo;
     </a>
   {% endif %}
+  
+  {% if site.intensedebate_comments %}
+  {% include intensedebate-comments.html %}
+  {% endif %}
   </footer>
 
 

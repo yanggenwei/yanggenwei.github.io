@@ -31,3 +31,5 @@ gems:
 - jekyll-sitemap
 - jekyll-gist
 - jekyll-feed
+
+intensedebate_comments: true
