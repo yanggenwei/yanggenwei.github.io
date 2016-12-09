@@ -18,13 +18,13 @@ layout: default
 
   <div class="post-content" itemprop="articleBody">
     {{ content }}
+    {% if site.intensedebate_comments %}
+    {% include intensedebate-comments.html %}
+    {% endif %}
   </div>
-
   {% endif %}
 
-{% if site.intensedebate_comments %}
-  {% include intensedebate-comments.html %}
-  {% endif %}
+
   <footer class="postNavigation">
   {% if page.previous.url %}
     <a class="postPrev" href="{{page.previous.url}}">
