@@ -21,7 +21,9 @@ layout: default
 
   </div>
   {% endif %}
-
+  {% if site.intensedebate_comments %}
+  {% include intensedebate-comments.html %}
+  {% endif %}
 
   <footer class="postNavigation">
   {% if page.previous.url %}
