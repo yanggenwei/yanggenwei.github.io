@@ -1,48 +1,33 @@
-baseurl: "" # The subpath of your site. Use "" if you're hosting a blog at the root level.
-url: https://yanggenwei.github.io
-title: "username-blog"
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
 
-paginate: 6 #articles per page
-paginate_path: /blog/page:num #makes pagination working
+# Site settings
+title: 根威的博客
+email: 324097191@qq.com
+description: 生于偶然,立与价值
+baseurl: "" # the subpath of your site, e.g. /blog
+url: https://yanggenwei.github.io # the base hostname & protocol for your site
+github_username:  yanggenwei
+paginate: 5
 
-#contacts
-git: "https://github.com/railsr"  #your github url here.
-stackoverflow: "http://stackoverflow.com/users/1231365/railsr" #Add your stackoverflow url here.
-twitter: "https://twitter.com/railsr7"  #Add your twitter url here.
+gems: [jekyll-paginate, kramdown]
+# Build settings
+markdown: kramdown
+highlighter: rouge
 
-#disqus comment
-disqus:
-    shortname: "test" #your disqus comment short name
-
-#google analytics
-google:
-    tracking-id: "" #your tracking id here
+kramdown:
+input: GFM
+auto_ids: true
+footnote_nr: 1
+entity_output: as_char
+toc_levels: 1..2
+enable_coderay: false
 
 gems:
-  - jekyll-sitemap
-  - jekyll-paginate
-
-# This is used by feed.xml. Uncomment if you want to use it.
-# description: "..."
-
-exclude:
-  - "README.md"
-  - "CHANGELOG.md"
-  - "Gemfile"
-  - "Gemfile.lock"
-
-permalink: /posts/:title
-
-defaults:
-  -
-    scope:
-      path: ""
-      type: "pages"
-    values:
-      layout: "default"
-  -
-    scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
+- jekyll-sitemap
+- jekyll-gist
+- jekyll-feed
