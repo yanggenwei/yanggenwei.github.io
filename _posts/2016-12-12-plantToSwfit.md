@@ -14,7 +14,7 @@ comments: true
 * 线程和网络访问的学习
 * 学习一个swift做的开源APP
 * * *
-* 由于已经有了OC的基础,一些基础部分就快速的过一遍了,推荐的完整学习网站:*<https://github.com/numbbbbb/the-swift-programming-language-in-chinese>
+* 由于已经有了OC的基础,一些基础部分就快速的过一遍了,推荐的完整学习网站: * <https://github.com/numbbbbb/the-swift-programming-language-in-chinese>
 
 # 第一章:基础语法的学习
 
@@ -64,6 +64,7 @@ print("我的名字是:",name)
 Swift是一个类型安全的语言.类型安全的语言可以让你清楚的知道代码要处理的类型。如果你的代码需要一个String,你绝对不可能不小心传进去一个Int.
 由于Swift是类型安全的,所以它会在编译你的代码时进行类型检查,并把不匹配的类型标记为错误.这可以让你在开发的时候发现并修复错误。
 而关于类型推测,简单来说就是当你没有指定一个变量或常量具体数据类型的时候,那么Swift就会使用类型推断来选择合适的类型.
+
 ```
 var name = "测试员"
 //name 会被推测为String类型
@@ -80,57 +81,73 @@ let NUMBER = 31
 let POINT = 0.4
 let RESULT = Double(NUMBER) + POINT
 ```
+
 转换必须是显式的,`数据类型(转换的对象)`,这种方式为强制类型转换,需要注意的是转换的时候** 不会四舍五入 **,例如3.6转换成整数就会变成3.
 
 ### 类型别名
 
 类型别名就是给现有类型定义另一个名字.在Swift中可以用`typealias`关键字来定义类型别名。
+
 ```
 typealias GWInt8 = UInt8
 var age = GWInt8.min
 print("age:\(age)")
 ```
+
 上面的例子就是给UInt8类型定义了另一个名字GWInt8,这样我们以后就可以使用GWInt8定义UInt8类型的数据了。
 
 ### 可选类型
 
 C和OC中并没有可选类型的概念.
+
 `太多的概念,我看了头疼,我们直入主题`
+
 简单来说,optional给予了变量或常量一种保护措施,防止为空的情况存在.
+
 ```
 var age:Int
 print(age)
 //这种情况在编译时就会发生错误,会提示你需要初始化.
 ```
+
 这时候就需要optional的存在
+
 ```
 var age:Int?
 print(age)
 ```
+
 这种情况会给age设定一个nil的值.但是仍然会有警告,会让我们设定默认值,不得不说,这种方式我很喜欢,在其他语言还要if判断
+
 ```
 var age:Int?
 print(age ?? 0)
 ```
+
 设定默认值之后,如果age没有赋值,那么就会采用0作用age的值。
 
-#### 显式拆包
+##### 显式拆包
 
 要知道opional类型的值不能被直接使用的
+
 ```
 var str:String? = "Hello World"
 print(str)
 输出结果:
 Optional("Hello World")
 ```
+
 这个时候需要用到!操作符来对optional进行拆包
+
 ```
 var str:String? = "Hello World"
 print(str!)
 输出结果
 Hello World
 ```
+
 至于为什么要拆包，那是因为optional类型是一个枚举:
+
 ```
 enum Optional<T> : Reflectable, NilLiteralConvertible {
     case None
@@ -144,6 +161,7 @@ enum Optional<T> : Reflectable, NilLiteralConvertible {
     static func convertFromNilLiteral() -> T?
 }
 ```
+
 当Optional没有值时，返回的nil其实就是Optional.None，即没有值。除了None以外，还有一个Some，当有值时就是被Some<T>包装的真正的值，所以我们拆包的动作其实就是将Some里面的值取出来。
 
 ##### 隐式拆包
