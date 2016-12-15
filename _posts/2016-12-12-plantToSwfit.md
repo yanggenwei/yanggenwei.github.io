@@ -4,7 +4,7 @@ title: "swift 3.0 学习计划"
 date: 2012-05-22
 excerpt: "通往大神之路"
 tags: [swift, iOS]
-project: true
+post: true
 comments: true
 ---
 
