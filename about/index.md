@@ -1,37 +1,14 @@
 ---
 layout: page
-title: About the Theme
-tags: [about, Jekyll, theme, moon]
-date: 2016-03-21
+title: 我的信息
+tags: [根威, 我]
+date: 2016-12-15
 comments: false
 ---
     
-<center><a href="http://taylantatli.github.io/Moon"><b>Moon</b></a> is a minimal, one column jekyll theme.</center>
+![](/assets/img/headimg.png)<center><a href="http://www.yanggenwei.com"><b>根威的博客主页</b></a> </center>
 
-## Features
-* Minimal, you can focus on your content
-* Responsive
-* Disqus integration
-* Syntax highlighting
-* Optional post image
-* Social icons
-* Page for sharing projects
-* Optional background image
-* Simple navigation menu
-* MathJax support
+我?在曾经是个典型的双子座:骄傲自大,完美主义的人吧.但我同时又具备了自省的能力,也渐渐的发现了自己具备的这些性格特征给周围人和自己带来的麻烦,所以也在渐渐的改变自己。至少现在,我是个低调,行动主义的人了.
+当然,原来的性格其实在我看来不是不好,而是得有一定的能力才能驾驭,没有足够的能力之前,我恐怕还得个低调的人.
+我的个子不高,从小到大也被各种鄙视,一米七刚过一些在这个生活美好的年代里真心不够看.从小也比较好动,天生尚武。现在嘛,工作已经已经把我养成了一头有力量的小猪.
 
-## Preview
-
-{% capture images %}
-    https://cloud.githubusercontent.com/assets/754514/14509720/61c61058-01d6-11e6-93ab-0918515ecd56.png
-    https://cloud.githubusercontent.com/assets/754514/14509716/61ac6c8e-01d6-11e6-879f-8308883de790.png
-{% endcapture %}
-{% include gallery images=images caption="Screenshots of Moon Theme" cols=2 %}
-
-See a [live version of Moon](http://taylantatli.github.io/Moon) hosted on GitHub.
-
-## Getting Started
-
-To learn how to install and use this theme check out the [Setup Guide](http://taylantatli.me/Moon/moon-theme/) for more information.
-      
-[Install Moon](https://github.com/TaylanTatli/Moon){: .btn}
