@@ -1,7 +1,7 @@
 # Site
 title:              根威博客
-bio:                '11'
-description:        "生于偶然，立于价值"
+bio:                '生于偶然，立于价值'
+description:        "是无数种选择,让我们幸运的相遇,这里使我们更加亲近和友好"
 reading_time:       true
 words_per_minute:   200
 logo:               'assets/img/logo.png'
@@ -37,7 +37,7 @@ disqus_shortname:   taylantatli
   #ad-client:
   #ad-slot:
 #bing-verify:
-#email:
+email:              324097191@qq.com
 #twitter:            username
 #facebook:           username
 github:             yanggenewi
@@ -53,7 +53,7 @@ github:             yanggenewi
 #dribbble:          username
 #youtube:           username
 #soundcloud:        username
-weibo:             根威
+weibo:              根威
 #flickr:            username
 #codepen:           username
 #keybase:           username
