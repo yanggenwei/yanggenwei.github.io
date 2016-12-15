@@ -5,8 +5,8 @@ tags: [根威, 我]
 date: 2016-12-15
 comments: false
 ---
-    
-![](/assets/img/headimg.png)<center><a href="http://www.yanggenwei.com"><b>根威的博客主页</b></a> </center>
+
+![GitHub set up-w100](https://github.com/assets/img/headimg.png)<center><a href="http://www.yanggenwei.com"><b>根威的博客主页</b></a> </center>
 
 我?在曾经是个典型的双子座:骄傲自大,完美主义的人吧.但我同时又具备了自省的能力,也渐渐的发现了自己具备的这些性格特征给周围人和自己带来的麻烦,所以也在渐渐的改变自己。至少现在,我是个低调,行动主义的人了.
 当然,原来的性格其实在我看来不是不好,而是得有一定的能力才能驾驭,没有足够的能力之前,我恐怕还得个低调的人.
