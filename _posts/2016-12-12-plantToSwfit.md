@@ -10,11 +10,15 @@ comments: true
 
 ## swift 3.0 学习计划（一）
 * * *
+
 * 基础语法的学习
 * 线程和网络访问的学习
 * 学习一个swift做的开源APP
+
 * * *
-* 由于已经有了OC的基础,一些基础部分就快速的过一遍了,推荐的完整学习网站: * <https://github.com/numbbbbb/the-swift-programming-language-in-chinese>
+
+
+>由于已经有了OC的基础,一些基础部分就快速的过一遍了,推荐的完整学习网站:  <https://github.com/numbbbbb/the-swift-programming-language-in-chinese>
 
 # 第一章:基础语法的学习
 
