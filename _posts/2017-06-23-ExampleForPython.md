@@ -2,7 +2,7 @@
 layout: post
 title: "学生管理系统 - Python3.0小例子"
 date: 2017-06-23
-excerpt: "全栈之路"
+excerpt: "Python"
 tags: [Python]
 post: true
 comments: true

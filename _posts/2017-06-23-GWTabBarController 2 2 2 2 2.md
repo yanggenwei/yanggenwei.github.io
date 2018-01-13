@@ -2,8 +2,8 @@
 layout: post
 title: "构建自定义TabBarController"
 date: 2017-06-23
-excerpt: "全栈之路"
-tags: [iOS]
+excerpt: "自定义控件"
+tags: [iOS][自定义控件]
 post: true
 comments: true
 ---
