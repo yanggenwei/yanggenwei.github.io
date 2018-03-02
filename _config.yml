@@ -1,0 +1,41 @@
+# ----------- CONFIGURABLE START -----------
+title:            "Weigel |iOS开发者 | 独立游戏开发者 "
+description:      "欢迎来到 Weigel「小世界」感受来自我的分享。"
+url:              https://github.com/yanggenwei/yanggenwei.github.io # 域名
+signoff:          "Weigel" # Your name
+facebook_appid:   #
+google_analytics: #
+share:            true 
+# 分页
+paginate: 9
+paginate_path: "liberxuepage:num"
+gems: [jekyll-paginate]
+links:
+  - name:         首页
+    url:          /
+    external:     false
+  - name:         技术
+    url:          /technology
+    external:     false
+  - name:         书籍
+    url:          /book
+    external:     false
+  - name:         归档
+    url:          /archives
+    external:     false
+  - name:         项目
+    url:          /project
+    external:     false
+  - name:         标签
+    url:          /tags
+    external:     false
+  - name:         标签
+    url:          /about
+    external:     false
+# ------------ CONFIGURABLE END ------------
+
+#permalink:        /:categories/:title.html
+permalink: /:year/:month/:day/:title.html
+defaults:
+  - values:
+      layout: "default"
