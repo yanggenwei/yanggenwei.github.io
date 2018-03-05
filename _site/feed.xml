@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Weigel |iOS开发者 | 独立游戏开发者 </title>
+    <description>欢迎来到 Weigel「小世界」感受来自我的分享。</description>
+    <link>http://localhost:4000</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml" />
+    
+      <item>
+        <title>Swift - 类和结构体</title>
+        <category>技术</category>
+        <description>在面向过程的语言中,要想实现类似类的功能只能借助结构体,其实从OC源码也能看出来,类的组成本就是复杂的结构体实现的。而在Swift中结构体的功能被扩大化了，基本拥有了和类差不多的功能:     ...</description>
+        <pubDate>2018-01-31 00:00:00 </pubDate>
+        <link>http://localhost:4000/2018/01/31/SwiftClassAndStruct.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/01/31/SwiftClassAndStruct.html</guid>
+      </item>
+    
+      <item>
+        <title>Swift - 函数</title>
+        <category>技术</category>
+        <description>  是的，函数。总的来说方法和函数并没有什么区别。因为本质相同，都是为了处理独立的工作而存在的。而要说有区别，在以前，函数是面向过程中的概念，方法是面向对象的概念。因为没有类的概念,函数可以直接...</description>
+        <pubDate>2018-01-30 00:00:00 </pubDate>
+        <link>http://localhost:4000/2018/01/30/SwiftMethod.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/01/30/SwiftMethod.html</guid>
+      </item>
+    
+      <item>
+        <title>Swift - 控制结构</title>
+        <category>技术</category>
+        <description>  Swift中的循环语句for,while,dowhile,还有分支switch相比于OC也有很多的改进和变化。这里主要是使用方式了，我们可以快速的过一下。for遍历数组:let names ...</description>
+        <pubDate>2018-01-29 00:00:00 </pubDate>
+        <link>http://localhost:4000/2018/01/29/SwiftControl-structure.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/01/29/SwiftControl-structure.html</guid>
+      </item>
+    
+      <item>
+        <title>Swift - 集合 - Set and Dictionary</title>
+        <category>技术</category>
+        <description>SetSet 也是集合的一种,很多方法与Array类似,但似仍然具有一些Array不具备的特性。Set具有无序且不重复的特性.我们在创建的时候,设定的值是:1,2,3,但是出来的结果有可能是2,...</description>
+        <pubDate>2018-01-15 00:00:00 </pubDate>
+        <link>http://localhost:4000/2018/01/15/SwiftSetand-Dictionary.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/01/15/SwiftSetand-Dictionary.html</guid>
+      </item>
+    
+      <item>
+        <title>Swift - 数组和集合</title>
+        <category>技术</category>
+        <description>在Swift中仍然保留了OC中的三种集合类型:Array:数组是有序的值集合。Set:集合是惟一值的无序集合。Dictionary:字典是键值关联的无序集合。  Arrays, sets, an...</description>
+        <pubDate>2018-01-13 00:00:00 </pubDate>
+        <link>http://localhost:4000/2018/01/13/swiftStringAndCharacter-2.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/01/13/swiftStringAndCharacter-2.html</guid>
+      </item>
+    
+      <item>
+        <title>Swift - 字符串和字符</title>
+        <category>技术</category>
+        <description>  Swift的字符串类型与Foundation的NSString类连接。Foundation还扩展了字符串来公开由NSString定义的方法。这意味着，如果您导入Foundation，您可以在...</description>
+        <pubDate>2018-01-03 00:00:00 </pubDate>
+        <link>http://localhost:4000/2018/01/03/swiftStringAndCharacter.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/01/03/swiftStringAndCharacter.html</guid>
+      </item>
+    
+      <item>
+        <title>数组中关于防止奔溃的解决方案</title>
+        <category>技术</category>
+        <description>项目中经常遇到数组越界的情况，这是个很烦人的问题，所以，就思考了下如何避免这样的问题。首先我们获取数组元素的方式分为:NSArray *array = @[@1,@2];NSLog(@"arra...</description>
+        <pubDate>2018-01-03 00:00:00 </pubDate>
+        <link>http://localhost:4000/2018/01/03/BoundsOfRang.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/01/03/BoundsOfRang.html</guid>
+      </item>
+    
+      <item>
+        <title>Swift - 开始</title>
+        <category>技术</category>
+        <description>本系列采用的是Apple 官方的 4.0API毕竟不是百科全书,所以不可能解释的很全面,我只能提供我自己的套路和学习方式供大家参考.在编写的过程中会采用官方文档中的一些实例和原文翻译，也会加上一...</description>
+        <pubDate>2018-01-02 00:00:00 </pubDate>
+        <link>http://localhost:4000/2018/01/02/SwiftStart.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2018/01/02/SwiftStart.html</guid>
+      </item>
+    
+      <item>
+        <title>CAKeyframeAnimation 关键帧动画</title>
+        <category>技术</category>
+        <description>贝塞尔曲线的基础我们了解了，接下来，我们开始自己做一些动画效果。那么配合贝塞尔曲线的一般使用关键帧动画。为啥呢？因为我喜欢啊,哈哈哈哈！  我们之前使用过CATransition,CATrans...</description>
+        <pubDate>2017-12-30 00:00:00 </pubDate>
+        <link>http://localhost:4000/2017/12/30/Animation-keyFrame.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/12/30/Animation-keyFrame.html</guid>
+      </item>
+    
+      <item>
+        <title>贝塞尔曲线绘制2</title>
+        <category>技术</category>
+        <description>在贝塞尔曲线(1)中，我们介绍了贝塞尔曲线的绘制,但是那是固定的,运用场景很少,运用更多的是一些动画效果。而前端主要的功能就是负责貌美如花,所以掌握一定的动画技巧还是有必要的。所以呢，我就开始从...</description>
+        <pubDate>2017-12-29 00:00:00 </pubDate>
+        <link>http://localhost:4000/2017/12/29/AnimationBessel-curve2.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/12/29/AnimationBessel-curve2.html</guid>
+      </item>
+    
+      <item>
+        <title>贝塞尔曲线绘制1</title>
+        <category>技术</category>
+        <description>我们日常生活中用的贝塞尔曲线的地方还是比较多的，我见过的例如,自定义侧边栏的动画效果,表格的下拉效果,视图的波浪循环的效果,数据分析时的折线图,自定义TabBar的时候也会用到等等，很多自定义的...</description>
+        <pubDate>2017-12-28 00:00:00 </pubDate>
+        <link>http://localhost:4000/2017/12/28/AnimationBessel-curve1.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/12/28/AnimationBessel-curve1.html</guid>
+      </item>
+    
+      <item>
+        <title>iOS中的粒子动画</title>
+        <category>技术</category>
+        <description>  CAEmitterLayer释放、动画和呈现粒子系统。它是比较完善的粒子渲染引擎了。所以我们在开始的时候需要去熟悉的它的属性，因为我们只需要设置它的属性就可以做到我们所想要的效果。粒子发射器...</description>
+        <pubDate>2017-12-28 00:00:00 </pubDate>
+        <link>http://localhost:4000/2017/12/28/Animation-Particle.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/12/28/Animation-Particle.html</guid>
+      </item>
+    
+      <item>
+        <title>iOS中的形变动画</title>
+        <category>技术</category>
+        <description>形变动画即形状的旋转,位移,缩放和形状的变化。官网地址:  https://developer.apple.com/documentation/coregraphics/cgaffinetran...</description>
+        <pubDate>2017-12-27 00:00:00 </pubDate>
+        <link>http://localhost:4000/2017/12/27/Animation-deformation.html</link>
+        <guid isPermaLink="true">http://localhost:4000/2017/12/27/Animation-deformation.html</guid>
+      </item>
+    
+  </channel>
+</rss>
