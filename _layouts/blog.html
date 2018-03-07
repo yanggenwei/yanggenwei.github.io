@@ -28,7 +28,7 @@
             <span class="icon-menu cross"><span class="middle"></span></span>
             <ul>
                {% for link in site.links %}           
-                <li><a href="{% unless link.external %}{{ site.url }}{% endunless %}{{ link.url }}">{{ link.name }}</a></li>
+                <li><a href="{% endunless %}{{ link.url }}">{{ link.name }}</a></li>
                  {% endfor %}
             </ul>
         </div>
