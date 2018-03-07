@@ -17,22 +17,22 @@
         <div class="navbar-menu">
             {% for link in site.links %}
             {{link.url site.url}}
-            <a href="{{ link.url }}?liberxue"  title="访问 {{  link.name }}" data-hover="{{link.name}}">{{ link.name }}</a>
+            <a href="{{site.url}}/{{link.url}}"  title="访问 {{  link.name }}" data-hover="{{link.name}}">{{ link.name }}</a>
             {% endfor %}
           </div>
-<!--        <div class="navbar-search" onclick="">-->
-<!--            <span class="icon-search"></span>-->
-<!--            <form method="post" action="/404.html" role="search">-->
-<!--                <span class="search-box">-->
-<!--         <input type="text" class="input" id="cb-search-content" required="true" placeholder="标题 标签..." maxlength="30" autocomplete="on">-->
-<!--                </span>-->
-<!--            </form>-->
-<!--        </div>-->
+        <div class="navbar-search" onclick="">
+            <span class="icon-search"></span>
+            <form method="post" action="/404.html" role="search">
+                <span class="search-box">
+         <input type="text" class="input" id="cb-search-content" required="true" placeholder="标题 标签..." maxlength="30" autocomplete="on">
+                </span>
+            </form>
+        </div>
         <div class="navbar-mobile-menu" onclick="">
             <span class="icon-menu cross"><span class="middle"></span></span>
             <ul>
                {% for link in site.links %}
-                 <a href="{{ link.url }}?liberxue"  title="访问 {{  link.name }}" data-hover="{{link.name}}">{{ link.url }}</a>
+                 <a href="{{site.url}}/{{link.url}}"  title="访问 {{  link.name }}" data-hover="{{link.name}}">{{ link.name }}</a>
                  {% endfor %}
             </ul>
         </div>
