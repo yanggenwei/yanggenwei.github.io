@@ -26,7 +26,7 @@
   <meta name="keywords"  content="我们日常生活中用的贝塞尔曲线的地方还是比较多的，我见过的例如,自定义侧边栏的动画效果,表格的下拉效果,视图的波浪循环的效果,数据分析时的折线图,自定义TabBar的时候也会用到等等，很多自定义的想要炫酷的效果都得用到。我也一直想做一些..." property='og:description' />
   <meta name="description" content="nothing is more practicla than a good theory" />
   <link href="https://cdn.bootcss.com/highlight.js/9.10.0/styles/xcode.min.css" rel="stylesheet">
-  <link href="http://localhost:4000/style/style-liberxue.css" rel="stylesheet">
+  <link href="/style/style-liberxue.css" rel="stylesheet">
 
   <meta content='http://localhost:4000/2017/12/28/AnimationBessel-curve1.html' property='og:url' />
   <meta content="http://localhost:4000/2017/12/28/AnimationBessel-curve1.html|我们日常生活中用的贝塞尔曲线的地方还是比较多的，我见过的例如,自定义侧边栏的动画效果,表格的下拉效果,视图的波浪循环的效果,数据分析时的折线图,自定义TabBar的时候也会用到等等，很多自定义的想要炫酷的效果都得用到。我也一直想做一些..." property='og:description' />
@@ -39,7 +39,7 @@
 <body class="" gtools_scp_screen_capture_injected="true">
 <header id="header" class="header bg-white">
     <div class="navbar-container">
-      <a href="/?liberxue" title="访问 Weigel |iOS开发者 | 独立游戏开发者 " class="navbar-logo"> <img src="http://localhost:4000/style/images/motto.png" alt="Weigel |iOS开发者 | 独立游戏开发者 "> </a>
+      <a href="/?liberxue" title="访问 Weigel |iOS开发者 | 独立游戏开发者 " class="navbar-logo"> <img src="http://p4wibncwo.bkt.clouddn.com/motto.png" alt="Weigel |iOS开发者 | 独立游戏开发者 "> </a>
         <div class="navbar-menu">
                          
             <a href="http://localhost:4000/">首页</a>
@@ -94,7 +94,7 @@
     <h1 class="post-title" itemprop="name headline">
 	贝塞尔曲线绘制1</h1>
 		 <div class="post-data">  
-	 <time datetime="2017-12-28 00:00:00" itemprop="datePublished">发布时间：2017-12-28</time>
+	 <time datetime="2017-12-28" itemprop="datePublished">发布时间：2017-12-28</time>
      <a href="/tags#技术" title="访问 技术" data-hover="博客分类: 技术">博客分类: 技术</a>
     <a href="#read"> 阅读次数: comments</a> 
 			</div>
@@ -134,7 +134,7 @@
 		<h1 class="post-title" itemprop="name headline">
 			贝塞尔曲线绘制1</h1>
 		<div class="post-data">
-				<time datetime="2017-12-28 00:00:00" itemprop="datePublished">2017-12-28 00:00:00</time>
+				<time datetime="2017-12-28" itemprop="datePublished">2017-12-28 00:00:00</time>
 		</div>
 	</div>
 	<div id="post-content" class="post-content" itemprop="articleBody">
@@ -207,7 +207,7 @@ https://aaaaaaaty.github.io/bezierMaker.js/playground/playground.html</p>
 
 <p>当然咯,我们从简单的一步一步来。
 首先是如何定义贝塞尔曲线</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>//先创建实例
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//先创建实例
 UIBezierPath *bPath = [UIBezierPath bezierPath];
 
 //然后我们可以设置它的颜色:
@@ -232,12 +232,11 @@ CGPoint center = (CGPoint){kSCREENWIDTH/2,kSCREENHEIGHT/2};
 [bPath closePath];
 //开始绘制之前组合出来的线
 [bPath stroke];
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>####然后我们再来画眼睛?(画实心圆)
 <img src="http://upload-images.jianshu.io/upload_images/1120896-274a4822fc8cc678.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/240" alt="眼睛.png" /></p>
-<div class="highlighter-rouge"><pre class="highlight"><code>//移动到画的中心点
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//移动到画的中心点
 [bPath moveToPoint:(CGPoint){center.x-50,center.y-40}];
 
 //画圆
@@ -258,8 +257,7 @@ clockwise:YES];
 [bPath closePath];
 //file 填充路径
 [bPath fill];
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>如果设定pi的值不那么直观,我们可以用下面的宏直接填写角度
 ` #define   DEGREES_TO_RADIANS(degrees)  ((M_PI * degrees)/ 180)`</p>
 
@@ -276,19 +274,18 @@ https://aaaaaaaty.github.io/bezierMaker.js/playground/playground.html
 <img src="http://upload-images.jianshu.io/upload_images/1120896-e5e0c1fd22566e8a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/440" alt="bezier.png" /></p>
 
 <p>可以看到,我们利用三个点绘制出我们想要的弧线。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>UIBezierPath *bPathB = [UIBezierPath bezierPath];
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UIBezierPath *bPathB = [UIBezierPath bezierPath];
 bPathB.lineWidth = 2.0;
 [bPathB moveToPoint:(CGPoint){center.x-60,center.y}];
 [bPathB addQuadCurveToPoint:(CGPoint){center.x+60,center.y} controlPoint:(CGPoint){center.x,center.y+50}];
 [bPathB stroke];
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>然后你通过上述方法会发现三个点竟然不是顺序的。是的。moveToPoint是p1,CurveToPoint是p3,而controlPoint是p2。</p>
 
 <p>然后我们再利用其它的方式画个空心圆当做它的大肥脸。
 <img src="http://upload-images.jianshu.io/upload_images/1120896-97c9c6ab6e560a00.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/240" alt="脸.png" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>//创建CAShapeLayer对象
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//创建CAShapeLayer对象
 CAShapeLayer *shapeLayer = [CAShapeLayer layer];
 shapeLayer.frame = CGRectMake(center.x-150, center.y-150, 300,300);//设置shapeLayer的尺寸和位置
 shapeLayer.fillColor = [UIColor clearColor].CGColor;//填充颜色为ClearColor
@@ -301,8 +298,7 @@ UIBezierPath *aPath = [UIBezierPath bezierPathWithOvalInRect:CGRectMake(0,0,300,
 shapeLayer.path = aPath.CGPath;
 //将shapeLayer添加到视图的layer上
 [self.layer addSublayer:shapeLayer];
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>这个实现方式就比较简单了，就是你绘制了一个CAShapeLayer图层，然后利用它的路径进行绘制。
 需要注意的是,shapeLayer的frame设置的x,y不是圆心，而是外圆开始的点。 那个宽高设不设无所谓。宽高设定由UUIBezierPath决定。</p>
 
@@ -310,24 +306,22 @@ shapeLayer.path = aPath.CGPath;
 ####矩形
 <img src="http://upload-images.jianshu.io/upload_images/1120896-cf6d87db7f92c1da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="矩形.png" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>绘制矩形只需要调用bezierPathWithRectF方法,然后填入参数就可以了。
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>绘制矩形只需要调用bezierPathWithRectF方法,然后填入参数就可以了。
 UIBezierPath *rectPath = [UIBezierPath bezierPathWithRect:(CGRect){10,kSCREENHEIGHT-154,90,60}];
 [rectPath setLineWidth:2.0];
 [rectPath stroke];//实心的需要使用fill方法
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>####圆角
 <img src="http://upload-images.jianshu.io/upload_images/1120896-60e563708f28c7fb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="圆角.png" /></p>
 
 <p>生成圆角的方法:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>UIBezierPath *roundedRectPath = [UIBezierPath bezierPathWithRoundedRect:(CGRect){110,kSCREENHEIGHT-154,90,60}
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UIBezierPath *roundedRectPath = [UIBezierPath bezierPathWithRoundedRect:(CGRect){110,kSCREENHEIGHT-154,90,60}
                                                           byRoundingCorners:UIRectCornerTopLeft
                                                                 cornerRadii:(CGSize){20,20}];
 [roundedRectPath setLineWidth:2.0];
 [roundedRectPath fill];
-</code></pre>
-</div>
-<div class="highlighter-rouge"><pre class="highlight"><code>cornerRadii: 表示圆角的大小咯，范围越大，圆角越圆。
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>cornerRadii: 表示圆角的大小咯，范围越大，圆角越圆。
 奇怪的是指定了宽度就可以了，高度怎么写都不会影响。毕竟宽度可以表示半径，这高度有啥用呢
 
 byRoundingCorners: 参数的值就是指定生成哪个方位的圆角
@@ -339,8 +333,7 @@ typedef NS_OPTIONS(NSUInteger, UIRectCorner) {
     UIRectCornerBottomRight = 1 &lt;&lt; 3, 右下角
     UIRectCornerAllCorners  = ~0UL 全部
 };
-</code></pre>
-</div>
+</code></pre></div></div>
 <h4 id="3阶曲线">3阶曲线</h4>
 
 <p><img src="http://upload-images.jianshu.io/upload_images/1120896-6539e508966da07c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="三阶曲线.png" /></p>
@@ -353,15 +346,14 @@ typedef NS_OPTIONS(NSUInteger, UIRectCorner) {
 
 <p>分为起点,终点，还有两个控制点。
 可以用下面的方法进行实现:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>    UIBezierPath *curveRectPath = [UIBezierPath bezierPath];
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    UIBezierPath *curveRectPath = [UIBezierPath bezierPath];
     [curveRectPath moveToPoint:(CGPoint){210,kSCREENHEIGHT-124}];
     [curveRectPath addCurveToPoint:(CGPoint){290,kSCREENHEIGHT-124}
                      controlPoint1:(CGPoint){250,kSCREENHEIGHT-154}
                      controlPoint2:(CGPoint){250,kSCREENHEIGHT-94}];
     [curveRectPath setLineWidth:2.0];
     [curveRectPath stroke];
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>DEMO:
 https://github.com/yanggenwei/GWAnimation/tree/master</p>
@@ -402,7 +394,7 @@ https://github.com/yanggenwei/GWAnimation/tree/master</p>
             <div class="meta-item meta-copyright">
                 <div class="meta-copyright-info">
                     <a href="/" class="info-logo">
-                         <img src="http://localhost:4000/style/images/motto.png"   title="访问 Yanggenwei_blog" data-hover="Yanggenwei_blog" alt="Yanggenwei_blog" /> </a>
+                         <img src="http://p4wibncwo.bkt.clouddn.com/motto.png"   title="访问 Yanggenwei_blog" data-hover="Yanggenwei_blog" alt="Yanggenwei_blog" /> </a>
                     <div class="info-text">
                         <p>Theme is <a href="http://www.liberxue.com/2017/08/03/Jekyllthemes.html" title="访问 Jekyll liberxue主题"  data-hover="Jekyll liberxue"target="_blank">Jekyll liberxue</a> by <a href="http://www.liberxue.com/about" target="_blank">liberxue</a></p>
                         <p>Powered by <a href="http://localhost:4000/tags/#Jekyll" title="Jekyll" data-hover="Jekyll" target="_blank" rel="nofollow">Jekyll</a></p>

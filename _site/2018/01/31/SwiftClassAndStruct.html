@@ -26,7 +26,7 @@
   <meta name="keywords"  content="在面向过程的语言中,要想实现类似类的功能只能借助结构体,其实从OC源码也能看出来,类的组成本就是复杂的结构体实现的。而在Swift中结构体的功能被扩大化了，基本拥有了和类差不多的功能:      定义属性    定义方法    定义g..." property='og:description' />
   <meta name="description" content="nothing is more practicla than a good theory" />
   <link href="https://cdn.bootcss.com/highlight.js/9.10.0/styles/xcode.min.css" rel="stylesheet">
-  <link href="http://localhost:4000/style/style-liberxue.css" rel="stylesheet">
+  <link href="/style/style-liberxue.css" rel="stylesheet">
 
   <meta content='http://localhost:4000/2018/01/31/SwiftClassAndStruct.html' property='og:url' />
   <meta content="http://localhost:4000/2018/01/31/SwiftClassAndStruct.html|在面向过程的语言中,要想实现类似类的功能只能借助结构体,其实从OC源码也能看出来,类的组成本就是复杂的结构体实现的。而在Swift中结构体的功能被扩大化了，基本拥有了和类差不多的功能:      定义属性    定义方法    定义g..." property='og:description' />
@@ -39,7 +39,7 @@
 <body class="" gtools_scp_screen_capture_injected="true">
 <header id="header" class="header bg-white">
     <div class="navbar-container">
-      <a href="/?liberxue" title="访问 Weigel |iOS开发者 | 独立游戏开发者 " class="navbar-logo"> <img src="http://localhost:4000/style/images/motto.png" alt="Weigel |iOS开发者 | 独立游戏开发者 "> </a>
+      <a href="/?liberxue" title="访问 Weigel |iOS开发者 | 独立游戏开发者 " class="navbar-logo"> <img src="http://p4wibncwo.bkt.clouddn.com/motto.png" alt="Weigel |iOS开发者 | 独立游戏开发者 "> </a>
         <div class="navbar-menu">
                          
             <a href="http://localhost:4000/">首页</a>
@@ -94,7 +94,7 @@
     <h1 class="post-title" itemprop="name headline">
 	Swift - 类和结构体</h1>
 		 <div class="post-data">  
-	 <time datetime="2018-01-31 00:00:00" itemprop="datePublished">发布时间：2018-01-31</time>
+	 <time datetime="2018-01-31" itemprop="datePublished">发布时间：2018-01-31</time>
      <a href="/tags#技术" title="访问 技术" data-hover="博客分类: 技术">博客分类: 技术</a>
     <a href="#read"> 阅读次数: comments</a> 
 			</div>
@@ -134,7 +134,7 @@
 		<h1 class="post-title" itemprop="name headline">
 			Swift - 类和结构体</h1>
 		<div class="post-data">
-				<time datetime="2018-01-31 00:00:00" itemprop="datePublished">2018-01-31 00:00:00</time>
+				<time datetime="2018-01-31" itemprop="datePublished">2018-01-31 00:00:00</time>
 		</div>
 	</div>
 	<div id="post-content" class="post-content" itemprop="articleBody">
@@ -190,17 +190,16 @@
 </blockquote>
 
 <h1 id="定义结构体和类">定义结构体和类</h1>
-<div class="highlighter-rouge"><pre class="highlight"><code>class className {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class className {
 
 }
 
 struct structName {
 
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>我们为类和结构体添加一些变量和方法:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>struct Resolution {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>struct Resolution {
     var width = 0
     var height = 0
     
@@ -220,38 +219,34 @@ class VideoMode {
     }
 }
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h1 id="类和结构体的初始化">类和结构体的初始化</h1>
 <p>定义是一回事,初始化又是另一回事。我们来看如何初始化它们:
 let <code class="highlighter-rouge">object Name</code> = <code class="highlighter-rouge">Class Name</code>()
 let  <code class="highlighter-rouge">variable Name</code> = <code class="highlighter-rouge">Struct Name</code>()</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>let someResolution = Resolution()
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let someResolution = Resolution()
 let someVideoMode = VideoMode()
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h1 id="访问属性">访问属性</h1>
 <p>Swift中访问属性使用的是链式结构,访问属性的时候使用 <code class="highlighter-rouge">.</code>
 <code class="highlighter-rouge">object name</code>.<code class="highlighter-rouge">propertyName</code></p>
-<div class="highlighter-rouge"><pre class="highlight"><code>print("The width of someResolution is \(someResolution.width)")
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>print("The width of someResolution is \(someResolution.width)")
 print("The width of someVideoMode is \(someVideoMode.resolution.width)")
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>类或者结构中的属性默认情况是可写可读的:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>someVideoMode.resolution.width = 1280
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>someVideoMode.resolution.width = 1280
 print("The width of someVideoMode is now \(someVideoMode.resolution.width)")
-</code></pre>
-</div>
+</code></pre></div></div>
 <blockquote>
   <p>关于直接修改类中结构的数据,这一点与OC是不同的，OC中并没有处理好这一层级关系,导致类的中结构体是只读的，无法去修改。而Swift允许您直接设置结构属性的子属性。</p>
 </blockquote>
 
 <h1 id="结构体的初始化">结构体的初始化</h1>
 <p>所有结构都有一个自动生成的成员智能初始化器，您可以使用它来初始化新结构实例的成员属性:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>struct Resolution {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>struct Resolution {
     var width = 0
     var height = 0
 }
@@ -260,11 +255,10 @@ let resolution = Resolution(width:100,height:120)
 print("width:\(resolution.width),height:\(resolution.height)")
 结果:
 width:100,height:120
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>而类并不具备这样的初始化器,如果需要特定的初始化需要去自定义,那么如何创建类似这样的初始化器呢?
 首先要知道初始化器是系统本身的方法,我们只能去重写或者重载它</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>class VideoMode {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class VideoMode {
     var _name: String
     
     init(){
@@ -276,15 +270,14 @@ let videoModeNormal = VideoMode()
 print("name:\(videoModeNormal._name)")
 结果:
 name:Jin
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>我们重写了系统默认的init()初始化方法,并且设定我们想定义的功能。</p>
 
 <p>那么我们如何去实现像结构体那样的初始功能呢?
 这时候我们需要用到重载功能.
 <strong>重载就是将父类已有的方法通过扩充参数的形式重新定义一遍。</strong>
 我们可以看一下对比:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>class VideoMode {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class VideoMode {
     var _name: String
     
     init(){
@@ -304,13 +297,12 @@ print("name:\(videoModeCustom._name)")
 结果:
 name:Jin
 name:Jack
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>我们类中申明了两个初始化方法,通过我们在实例化的时候使用不同的初始化方式,系统会自动识别使用哪个方法。
 例如调用<code class="highlighter-rouge">VideoMode()</code>的时候系统会调用init()方法,调用<code class="highlighter-rouge">VideoMode(name: "Jack")</code>的时候，系统会调用 <code class="highlighter-rouge">init(name:String)</code>方法。
 当然,struct的初始化方法也是可以这样实现的:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>struct Resolution {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>struct Resolution {
     var width: Double
     
     init(){
@@ -330,33 +322,30 @@ print("width:\(resolutionCustom.width)")
 结果:
 width:100.0
 width:120.0
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <blockquote>
   <p>调用init初始化方法,必须初始化结构体或者类中所有的属性。当然,如果该属性定义的时候已经初始化可以不用。
 初始化可以参数下面的设定</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>    var width: Double = 0
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    var width: Double = 0
     var height: Double = 0
     
     init(){
         width = 100
     }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>如果你像下面这样写,会报出:Return from initializer without initializing all stored properties(提示你返回的时候,并没有将所有属性初始化)的错误</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>    var width: Double = 0
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    var width: Double = 0
     var height: Double 
     
     init(){
         width = 100
     }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h1 id="类的初始化">类的初始化</h1>
 <p>上面大致了解了结构体的初始化,还有一些类的初始化.虽然两者很多地方是相同.但总有一些不同的地方.
@@ -378,7 +367,7 @@ class 的设定中,初始化分为了指定初始化(Designated initializers)和
 </blockquote>
 
 <p>我们可以是实验一下:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>class Resolution {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Resolution {
     var width: Double = 0
     var height: Double = 0
     
@@ -390,18 +379,16 @@ class 的设定中,初始化分为了指定初始化(Designated initializers)和
         self.height = height;
     }  
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>会报错:
 Use of ‘self’ in property access ‘height’ before self.init initializes self
 Self.init isn’t called on all paths before returning from initializer
 这两个错误简单来说反应的就是这个init目前来说并不具备系统的init功能,它其实只是我们自定义的方法,但因为使用了init关键字,系统就无法理解这种行为了。 而要想让它发生作用,我们需要它本身加入init方法的功能。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>   convenience init(height:Double){
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   convenience init(height:Double){
         self.init()
         self.height = height;
     }  
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>这样就可以了。
 而Swift本生也指定了这样的规则:</p>
 <blockquote>
@@ -582,7 +569,7 @@ Swift的方法防止了一种情况，即一个超类的简单初始化器是由
 </blockquote>
 
 <p>当您编写一个与超类指定初始化器相匹配的子类初始化器时，您实际上对指定的初始化器进行重写。因此，您必须在子类的初始化器定义之前编写<code class="highlighter-rouge">override</code>修饰符。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>class Vehicle {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>class Vehicle {
     var numberOfWheels = 0
 }
 
@@ -592,8 +579,7 @@ class Bicycle: Vehicle {
         numberOfWheels = 2
     }
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h1 id="自动初始化继承">自动初始化继承</h1>
 <p>As mentioned above, subclasses do not inherit their superclass initializers by default. However, superclass initializers are automatically inherited if certain conditions are met. In practice, this means that you do not need to write initializer overrides in many common scenarios, and can inherit your superclass initializers with minimal effort whenever it is safe to do so.
@@ -731,7 +717,7 @@ In all other cases, define a class, and create instances of that class to be man
             <div class="meta-item meta-copyright">
                 <div class="meta-copyright-info">
                     <a href="/" class="info-logo">
-                         <img src="http://localhost:4000/style/images/motto.png"   title="访问 Yanggenwei_blog" data-hover="Yanggenwei_blog" alt="Yanggenwei_blog" /> </a>
+                         <img src="http://p4wibncwo.bkt.clouddn.com/motto.png"   title="访问 Yanggenwei_blog" data-hover="Yanggenwei_blog" alt="Yanggenwei_blog" /> </a>
                     <div class="info-text">
                         <p>Theme is <a href="http://www.liberxue.com/2017/08/03/Jekyllthemes.html" title="访问 Jekyll liberxue主题"  data-hover="Jekyll liberxue"target="_blank">Jekyll liberxue</a> by <a href="http://www.liberxue.com/about" target="_blank">liberxue</a></p>
                         <p>Powered by <a href="http://localhost:4000/tags/#Jekyll" title="Jekyll" data-hover="Jekyll" target="_blank" rel="nofollow">Jekyll</a></p>

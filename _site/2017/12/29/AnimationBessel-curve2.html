@@ -26,7 +26,7 @@
   <meta name="keywords"  content="在贝塞尔曲线(1)中，我们介绍了贝塞尔曲线的绘制,但是那是固定的,运用场景很少,运用更多的是一些动画效果。而前端主要的功能就是负责貌美如花,所以掌握一定的动画技巧还是有必要的。所以呢，我就开始从简单的慢慢研究吧。##下拉动画首先是如下..." property='og:description' />
   <meta name="description" content="nothing is more practicla than a good theory" />
   <link href="https://cdn.bootcss.com/highlight.js/9.10.0/styles/xcode.min.css" rel="stylesheet">
-  <link href="http://localhost:4000/style/style-liberxue.css" rel="stylesheet">
+  <link href="/style/style-liberxue.css" rel="stylesheet">
 
   <meta content='http://localhost:4000/2017/12/29/AnimationBessel-curve2.html' property='og:url' />
   <meta content="http://localhost:4000/2017/12/29/AnimationBessel-curve2.html|在贝塞尔曲线(1)中，我们介绍了贝塞尔曲线的绘制,但是那是固定的,运用场景很少,运用更多的是一些动画效果。而前端主要的功能就是负责貌美如花,所以掌握一定的动画技巧还是有必要的。所以呢，我就开始从简单的慢慢研究吧。##下拉动画首先是如下..." property='og:description' />
@@ -39,7 +39,7 @@
 <body class="" gtools_scp_screen_capture_injected="true">
 <header id="header" class="header bg-white">
     <div class="navbar-container">
-      <a href="/?liberxue" title="访问 Weigel |iOS开发者 | 独立游戏开发者 " class="navbar-logo"> <img src="http://localhost:4000/style/images/motto.png" alt="Weigel |iOS开发者 | 独立游戏开发者 "> </a>
+      <a href="/?liberxue" title="访问 Weigel |iOS开发者 | 独立游戏开发者 " class="navbar-logo"> <img src="http://p4wibncwo.bkt.clouddn.com/motto.png" alt="Weigel |iOS开发者 | 独立游戏开发者 "> </a>
         <div class="navbar-menu">
                          
             <a href="http://localhost:4000/">首页</a>
@@ -94,7 +94,7 @@
     <h1 class="post-title" itemprop="name headline">
 	贝塞尔曲线绘制2</h1>
 		 <div class="post-data">  
-	 <time datetime="2017-12-29 00:00:00" itemprop="datePublished">发布时间：2017-12-29</time>
+	 <time datetime="2017-12-29" itemprop="datePublished">发布时间：2017-12-29</time>
      <a href="/tags#技术" title="访问 技术" data-hover="博客分类: 技术">博客分类: 技术</a>
     <a href="#read"> 阅读次数: comments</a> 
 			</div>
@@ -129,7 +129,7 @@
 		<h1 class="post-title" itemprop="name headline">
 			贝塞尔曲线绘制2</h1>
 		<div class="post-data">
-				<time datetime="2017-12-29 00:00:00" itemprop="datePublished">2017-12-29 00:00:00</time>
+				<time datetime="2017-12-29" itemprop="datePublished">2017-12-29 00:00:00</time>
 		</div>
 	</div>
 	<div id="post-content" class="post-content" itemprop="articleBody">
@@ -169,7 +169,7 @@
 </ol>
 
 <p>问题的解决有很多种,我写下的只是我的解决思路:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>1. 创建一个视图,重写它的drawRect:方法
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 创建一个视图,重写它的drawRect:方法
 
 UIBezierPath *bezier = [UIBezierPath bezierPath];
 UIColor *color = hexStrColor(@"#FF8C69");
@@ -178,25 +178,22 @@ bezier.lineWidth = 1.0;
 [bezier moveToPoint:(CGPoint){0,0}];
 [bezier addQuadCurveToPoint:(CGPoint){self.width,0} controlPoint:(CGPoint){self.width/2,self.offsetY}];
 [bezier fill];
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>通过上面的方法,我们绘制了二阶曲线,那么就是解决第二个问题了。</p>
 
 <p>想让我们的表格下拉的时候，视图也跟着变化,那么肯定需要知道我们表格下拉的具体数值,所以需要实现UIScrollViewDelegate的scrollViewDidScroll方法</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>- (void)scrollViewDidScroll:(UIScrollView *)scrollView{}
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- (void)scrollViewDidScroll:(UIScrollView *)scrollView{}
+</code></pre></div></div>
 
 <p>通过该方法我们实时的知道表格的Y轴偏移量,所以我们还需要在之前的视图中添加一个变量:
 <code class="highlighter-rouge"><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">readwrite</span><span class="p">,</span><span class="n">unsafe_unretained</span><span class="p">)</span><span class="n">CGFloat</span> <span class="n">offsetY</span><span class="p">;</span></code>
 通过该变量来实时的控制二阶曲线的controlPoint参数的Y值。</p>
 
 <p>接下来,我们在scrollViewDidScroll方法中写下如下代码。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>self.headerView.offsetY = -scrollView.contentOffset.y;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>self.headerView.offsetY = -scrollView.contentOffset.y;
 [self.headerView setNeedsDisplay];
 [self.headerView setFrame:(CGRect){0,statusBarHeight,kSCREENWIDTH,- scrollView.contentOffset.y}];
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>因为我们需要在滑动的时候实时的改变曲线的拐点,然后生成对应的曲线。也就是我们需要实时的重新绘制视图,也就是调用drawRect: 方法.所以我们需要调用setNeedsDisplay方法。通过在外部调用setNeedsDisplay可以是视图重新调用drawRect方法</p>
 
 <blockquote>
@@ -209,7 +206,7 @@ bezier.lineWidth = 1.0;
 
 <p>这是个根据路径变化的动画，也是我在很多软件上经常看到的一种加载动画。所以就自己试试能不能做不出来。
 先创建三个球,哈哈，先把我们要玩的球画出来:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>CGFloat radius = 20;
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CGFloat radius = 20;
 CGFloat marginLeft = 10;
 //第一颗球
 CAShapeLayer *fLayer = [CAShapeLayer new];
@@ -232,8 +229,7 @@ self.layer_list = [NSArray arrayWithObjects:fLayer,sLayer,tLayer,nil];
 [self.layer addSublayer:fLayer];
 [self.layer addSublayer:sLayer];
 [self.layer addSublayer:tLayer];
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>球画好了我们就要开始研究它的运动轨迹了。通过一些观察我们分析得出了下面的运动轨迹:
 <img src="http://upload-images.jianshu.io/upload_images/1120896-abd93f18d21599cf.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第一课球的运动动画.gif" />
 <img src="http://upload-images.jianshu.io/upload_images/1120896-8cd887b449a4c6bd.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第二颗球运动动画.gif" />
@@ -247,7 +243,7 @@ self.layer_list = [NSArray arrayWithObjects:fLayer,sLayer,tLayer,nil];
 <p>第一个半圆是以两个圆的中心点为圆心绘制的半圆,
 <code class="highlighter-rouge">第一个半圆是 π -&gt; 0° 顺时针运动,然后π -&gt; 0°逆时针运动</code>
 <img src="http://upload-images.jianshu.io/upload_images/1120896-0f3102e3e05981ea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第一颗球的运动轨迹.png" /></p>
-<div class="highlighter-rouge"><pre class="highlight"><code>CAShapeLayer *fLayer = self.layer_list[0];
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CAShapeLayer *fLayer = self.layer_list[0];
 CAShapeLayer *testLayer = [CAShapeLayer new];
 testLayer.fillColor = [UIColor clearColor].CGColor;
 testLayer.borderWidth = 1.0f;
@@ -268,13 +264,12 @@ UIBezierPath *semicirclePath = [UIBezierPath bezierPath];
                         clockwise:NO];
 testLayer.path = semicirclePathA.CGPath;
 [self.layer addSublayer:testLayer];
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>第一颗球的轨迹我们清楚之后我们来设置第二颗球的轨迹:
 <code class="highlighter-rouge">0° -&gt; π 顺时针运动</code>
 <img src="http://upload-images.jianshu.io/upload_images/1120896-d2920032746f5893.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第二颗球的运动轨迹.png" /></p>
-<div class="highlighter-rouge"><pre class="highlight"><code>    CAShapeLayer *fLayer = self.layer_list[0];
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    CAShapeLayer *fLayer = self.layer_list[0];
     CAShapeLayer *sLayer = self.layer_list[1];
     //第二段动画
     CAShapeLayer *testLeftLayer = [CAShapeLayer new];
@@ -286,13 +281,12 @@ testLayer.path = semicirclePathA.CGPath;
                         radius:15 startAngle:0 endAngle:M_PI clockwise:YES];
     testLeftLayer.path = leftPath.CGPath;
     [self.layer addSublayer:testLeftLayer];
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>我们再来看看第三颗球:
 <code class="highlighter-rouge">0° -&gt; π 逆时针运动</code>
 <img src="http://upload-images.jianshu.io/upload_images/1120896-a9dcde2912e87468.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第三颗球的运动轨迹.png" /></p>
-<div class="highlighter-rouge"><pre class="highlight"><code>    CAShapeLayer *sLayer = self.layer_list[1];
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    CAShapeLayer *sLayer = self.layer_list[1];
     CAShapeLayer *tLayer = self.layer_list[2];
     //第三段动画
     CAShapeLayer *testRightLayer = [CAShapeLayer new];
@@ -305,8 +299,7 @@ testLayer.path = semicirclePathA.CGPath;
                          radius:15 startAngle:0 endAngle:M_PI clockwise:NO];
     testRightLayer.path = rightPath.CGPath;
     [self.layer addSublayer:testRightLayer];
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>最后的静态效果图如下:
 <img src="http://upload-images.jianshu.io/upload_images/1120896-74f9042f3aca98ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="静态效果图.png" /></p>
@@ -314,11 +307,10 @@ testLayer.path = semicirclePathA.CGPath;
 <p>设定好轨迹之后我们就来设置它们的动画效果,动画效果就要用到我们上一篇中提到的关键帧动画了.
 由于三个动画具有相同的属性设置，所以我们最好是封装一下,提取出它们会有变化的数值。
 例如，动画的依赖视图会变，它们的运动path会变,所以提取出这两个参数。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>- (void)keyFrameAnimationWithLayer:(CALayer *)layer path:(UIBezierPath *)path;
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- (void)keyFrameAnimationWithLayer:(CALayer *)layer path:(UIBezierPath *)path;
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>    CAKeyframeAnimation *keyAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    CAKeyframeAnimation *keyAnimation = [CAKeyframeAnimation animationWithKeyPath:@"position"];
     keyAnimation.path = path.CGPath;
     keyAnimation.fillMode = kCAFillModeForwards;
     keyAnimation.calculationMode = kCAAnimationPaced;
@@ -329,35 +321,31 @@ testLayer.path = semicirclePathA.CGPath;
     keyAnimation.repeatCount = MAXFLOAT;
     keyAnimation.calculationMode = kCAAnimationCubic;
     [layer addAnimation:keyAnimation forKey:@"keyFrameAnimation"];
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>具体的参数信息已经在上一篇中提过了，这里就不说了。
 然后我们开始调用:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>//调用第一颗球
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//调用第一颗球
 [self keyFrameAnimationWithLayer:fLayer path:semicirclePath];
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p><img src="http://upload-images.jianshu.io/upload_images/1120896-b70717a25600a727.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第一颗球卡顿的动画.gif" />
 我们运行之后会发现在两个圆的交界处，卡顿了一下下（关于这个问题，我尝试调整了动画的timingFunction属性还有calculationMode都无法很好的解决这个问题,我猜想是由于两个路径是分开绘制的原因，具体的原因还在研究当中。）
 不过我还是找到了解决办法:
 设置两个路径，然后将路径进行合并成一个路径:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>    UIBezierPath *semicirclePathA = [UIBezierPath bezierPath];
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    UIBezierPath *semicirclePathA = [UIBezierPath bezierPath];
     [semicirclePathA addArcWithCenter:(CGPoint){fLayer.frame.origin.x+25,fLayer.frame.origin.y+10} radius:15 startAngle:M_PI endAngle:0 clockwise:YES];
     UIBezierPath *semicirclePathB = [UIBezierPath bezierPath];
     [semicirclePathB addArcWithCenter:(CGPoint){sLayer.frame.origin.x+25,sLayer.frame.origin.y+10} radius:15 startAngle:M_PI endAngle:0 clockwise:NO];
     [semicirclePathA appendPath:semicirclePathB];
     testLayer.path = semicirclePathA.CGPath;
     [self.layer addSublayer:testLayer];
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>运行之后,可以看到效果，如巧克力般丝滑的感觉:
 <img src="http://upload-images.jianshu.io/upload_images/1120896-abd93f18d21599cf.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="第一课球的运动动画.gif" /></p>
 
 <p>画好第一个球之后,我们再来画其他的两个球，基本就相同了,只要调用</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>- (void)keyFrameAnimationWithLayer:(CALayer *)layer path:(UIBezierPath *)path;
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- (void)keyFrameAnimationWithLayer:(CALayer *)layer path:(UIBezierPath *)path;
+</code></pre></div></div>
 <p>方法就可以了。</p>
 
 <p>效果如下:
@@ -373,7 +361,7 @@ testLayer.path = semicirclePathA.CGPath;
 
 <p>动画因为只是两个值得变化 , FromValue -&gt; toValue , 我们采用CABasicAnimation就可以轻松实现效果.
 我们同样来封装该动画:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>- (void)colorGradientAnimationWithLayer:(CALayer *)layer fromValue:(id)fromValue toValue:(id)toValue{
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- (void)colorGradientAnimationWithLayer:(CALayer *)layer fromValue:(id)fromValue toValue:(id)toValue{
     CABasicAnimation *alphaAnimation = [CABasicAnimation animationWithKeyPath:@"backgroundColor"];
     alphaAnimation.fromValue = fromValue;
     alphaAnimation.toValue = toValue;
@@ -381,11 +369,10 @@ testLayer.path = semicirclePathA.CGPath;
     alphaAnimation.repeatCount = MAXFLOAT;
     [layer addAnimation:alphaAnimation forKey:@"anmiationAlpha"];
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>调用:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>//第一颗球的变化
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//第一颗球的变化
 [self colorGradientAnimationWithLayer:fLayer
                                     fromValue:(__bridge id _Nullable)(getColor(102, 170, 238, 1)).CGColor
                                       toValue:(__bridge id _Nullable)(getColor(102, 170, 238, 0.2)).CGColor];
@@ -398,8 +385,7 @@ testLayer.path = semicirclePathA.CGPath;
                                 fromValue:(__bridge id _Nullable)(getColor(102, 170, 238, 0.2)).CGColor
                                   toValue:(__bridge id _Nullable)(getColor(102, 170, 238, 0.5)).CGColor];
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>####在制作过程中出现的情况:
 1.动画闪烁
@@ -452,7 +438,7 @@ https://github.com/yanggenwei/GWAnimation/tree/master</p>
             <div class="meta-item meta-copyright">
                 <div class="meta-copyright-info">
                     <a href="/" class="info-logo">
-                         <img src="http://localhost:4000/style/images/motto.png"   title="访问 Yanggenwei_blog" data-hover="Yanggenwei_blog" alt="Yanggenwei_blog" /> </a>
+                         <img src="http://p4wibncwo.bkt.clouddn.com/motto.png"   title="访问 Yanggenwei_blog" data-hover="Yanggenwei_blog" alt="Yanggenwei_blog" /> </a>
                     <div class="info-text">
                         <p>Theme is <a href="http://www.liberxue.com/2017/08/03/Jekyllthemes.html" title="访问 Jekyll liberxue主题"  data-hover="Jekyll liberxue"target="_blank">Jekyll liberxue</a> by <a href="http://www.liberxue.com/about" target="_blank">liberxue</a></p>
                         <p>Powered by <a href="http://localhost:4000/tags/#Jekyll" title="Jekyll" data-hover="Jekyll" target="_blank" rel="nofollow">Jekyll</a></p>

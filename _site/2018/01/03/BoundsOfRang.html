@@ -26,7 +26,7 @@
   <meta name="keywords"  content="项目中经常遇到数组越界的情况，这是个很烦人的问题，所以，就思考了下如何避免这样的问题。首先我们获取数组元素的方式分为:NSArray *array = @[@1,@2];NSLog(@"arrary: %@",[array objec..." property='og:description' />
   <meta name="description" content="nothing is more practicla than a good theory" />
   <link href="https://cdn.bootcss.com/highlight.js/9.10.0/styles/xcode.min.css" rel="stylesheet">
-  <link href="http://localhost:4000/style/style-liberxue.css" rel="stylesheet">
+  <link href="/style/style-liberxue.css" rel="stylesheet">
 
   <meta content='http://localhost:4000/2018/01/03/BoundsOfRang.html' property='og:url' />
   <meta content="http://localhost:4000/2018/01/03/BoundsOfRang.html|项目中经常遇到数组越界的情况，这是个很烦人的问题，所以，就思考了下如何避免这样的问题。首先我们获取数组元素的方式分为:NSArray *array = @[@1,@2];NSLog(@"arrary: %@",[array objec..." property='og:description' />
@@ -39,7 +39,7 @@
 <body class="" gtools_scp_screen_capture_injected="true">
 <header id="header" class="header bg-white">
     <div class="navbar-container">
-      <a href="/?liberxue" title="访问 Weigel |iOS开发者 | 独立游戏开发者 " class="navbar-logo"> <img src="http://localhost:4000/style/images/motto.png" alt="Weigel |iOS开发者 | 独立游戏开发者 "> </a>
+      <a href="/?liberxue" title="访问 Weigel |iOS开发者 | 独立游戏开发者 " class="navbar-logo"> <img src="http://p4wibncwo.bkt.clouddn.com/motto.png" alt="Weigel |iOS开发者 | 独立游戏开发者 "> </a>
         <div class="navbar-menu">
                          
             <a href="http://localhost:4000/">首页</a>
@@ -94,7 +94,7 @@
     <h1 class="post-title" itemprop="name headline">
 	数组中关于防止奔溃的解决方案</h1>
 		 <div class="post-data">  
-	 <time datetime="2018-01-03 00:00:00" itemprop="datePublished">发布时间：2018-01-03</time>
+	 <time datetime="2018-01-03" itemprop="datePublished">发布时间：2018-01-03</time>
      <a href="/tags#技术" title="访问 技术" data-hover="博客分类: 技术">博客分类: 技术</a>
     <a href="#read"> 阅读次数: comments</a> 
 			</div>
@@ -129,7 +129,7 @@
 		<h1 class="post-title" itemprop="name headline">
 			数组中关于防止奔溃的解决方案</h1>
 		<div class="post-data">
-				<time datetime="2018-01-03 00:00:00" itemprop="datePublished">2018-01-03 00:00:00</time>
+				<time datetime="2018-01-03" itemprop="datePublished">2018-01-03 00:00:00</time>
 		</div>
 	</div>
 	<div id="post-content" class="post-content" itemprop="articleBody">
@@ -157,11 +157,10 @@
 <p><small>
 项目中经常遇到数组越界的情况，这是个很烦人的问题，所以，就思考了下如何避免这样的问题。
 首先我们获取数组元素的方式分为:</small></p>
-<div class="highlighter-rouge"><pre class="highlight"><code>NSArray *array = @[@1,@2];
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NSArray *array = @[@1,@2];
 NSLog(@"arrary: %@",[array objectAtIndex:2]);
 NSLog(@"arrary: %@",array[2]);
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>是的，通过objectAtIndex和[] 方式。</p>
 
 <p>然后我们是不是第一个想法就是写分类然后重写？
@@ -174,7 +173,7 @@ NSLog(@"arrary: %@",array[2]);
 而且还有一个问题就是，objectAtIndex方法很明确了，那么[] 这是个什么鬼？这也能用方法来表示？是的。
 有两种方式可以知道：
 第一种直接看错误:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>2017-12-29 19:25:36.510723+0800 OCTest[39152:4167702] *** Terminating app due to uncaught exception 'NSRangeException', reason: '*** -[__NSArrayI objectAtIndexedSubscript:]: index 3 beyond bounds [0 .. 1]'
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>2017-12-29 19:25:36.510723+0800 OCTest[39152:4167702] *** Terminating app due to uncaught exception 'NSRangeException', reason: '*** -[__NSArrayI objectAtIndexedSubscript:]: index 3 beyond bounds [0 .. 1]'
 *** First throw call stack:
 (
 	0   CoreFoundation                      0x00007fff4150700b __exceptionPreprocess + 171
@@ -185,14 +184,13 @@ NSLog(@"arrary: %@",array[2]);
 	5   libdyld.dylib                       0x00007fff68cd5115 start + 1
 )
 libc++abi.dylib: terminating with uncaught exception of type NSException
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>我们人为越界了一下，发现了错误所在
 ` [__NSArrayI objectAtIndexedSubscript:]`
 是的，这里告诉我们就是它发生了错误.
 第二种：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>在main.m文件中写下如下代码:
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>在main.m文件中写下如下代码:
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         NSArray *array = @[@1,@2];
@@ -215,8 +213,7 @@ int main(int argc, const char * argv[]) {
     }
     return 0;
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>通过代码我们也知道了[]调用的方式:
 <code class="highlighter-rouge">sel_registerName("objectAtIndexedSubscript:")</code>
@@ -251,17 +248,16 @@ Exchanges the implementations of two methods.
 <p>然后我们再自己实现个方法，这方法里面我们做一下规避操作。比如用try catch把异常给捕捉起来，然后打上日志。就不用担心会崩溃，也不知道哪里发生了错误。当然具体的方法要根据业务场景自我实现。</p>
 
 <p>下面的__NSArrayI 和__NSArrrayM分别代表不可变数组和可变数组的真实类型</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>NSLog(@"type of array:%@",[array class]);
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>NSLog(@"type of array:%@",[array class]);
 NSLog(@"type of mutableArray:%@",[mArray class]);
 
 结果如下:
 2017-12-29 19:46:08.048887+0800 OCTest[39319:4202006] type of array:__NSArrayI
 2017-12-29 19:46:08.048905+0800 OCTest[39319:4202006] type of mutableArray:__NSArrayM
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>代码如下:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="cp">#import "NSArray+BoundsOfRang.h"
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#import "NSArray+BoundsOfRang.h"
 #import &lt;objc/runtime.h&gt;
 </span>
 <span class="k">@implementation</span> <span class="nc">NSArray</span> <span class="p">(</span><span class="nl">BoundsOfRang</span><span class="p">)</span>
@@ -351,8 +347,7 @@ NSLog(@"type of mutableArray:%@",[mArray class]);
     <span class="p">}</span>
 <span class="p">}</span>
 <span class="k">@end</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>&lt;/small&gt;</p>
 
 
@@ -391,7 +386,7 @@ NSLog(@"type of mutableArray:%@",[mArray class]);
             <div class="meta-item meta-copyright">
                 <div class="meta-copyright-info">
                     <a href="/" class="info-logo">
-                         <img src="http://localhost:4000/style/images/motto.png"   title="访问 Yanggenwei_blog" data-hover="Yanggenwei_blog" alt="Yanggenwei_blog" /> </a>
+                         <img src="http://p4wibncwo.bkt.clouddn.com/motto.png"   title="访问 Yanggenwei_blog" data-hover="Yanggenwei_blog" alt="Yanggenwei_blog" /> </a>
                     <div class="info-text">
                         <p>Theme is <a href="http://www.liberxue.com/2017/08/03/Jekyllthemes.html" title="访问 Jekyll liberxue主题"  data-hover="Jekyll liberxue"target="_blank">Jekyll liberxue</a> by <a href="http://www.liberxue.com/about" target="_blank">liberxue</a></p>
                         <p>Powered by <a href="http://localhost:4000/tags/#Jekyll" title="Jekyll" data-hover="Jekyll" target="_blank" rel="nofollow">Jekyll</a></p>

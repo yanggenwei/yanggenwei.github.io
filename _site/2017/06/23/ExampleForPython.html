@@ -26,7 +26,7 @@
   <meta name="keywords"  content="采用Python3.0,使用Python3.0以下编译会报错的。以前在学习Python的时候,写的一个小例子,简单的说是为了锻炼一下面向对象而写的,分享出来:这是一个简单的学生信息管理系统,通过不同的模块构建，最后达成我们得目的,先看..." property='og:description' />
   <meta name="description" content="nothing is more practicla than a good theory" />
   <link href="https://cdn.bootcss.com/highlight.js/9.10.0/styles/xcode.min.css" rel="stylesheet">
-  <link href="http://localhost:4000/style/style-liberxue.css" rel="stylesheet">
+  <link href="/style/style-liberxue.css" rel="stylesheet">
 
   <meta content='http://localhost:4000/2017/06/23/ExampleForPython.html' property='og:url' />
   <meta content="http://localhost:4000/2017/06/23/ExampleForPython.html|采用Python3.0,使用Python3.0以下编译会报错的。以前在学习Python的时候,写的一个小例子,简单的说是为了锻炼一下面向对象而写的,分享出来:这是一个简单的学生信息管理系统,通过不同的模块构建，最后达成我们得目的,先看..." property='og:description' />
@@ -39,7 +39,7 @@
 <body class="" gtools_scp_screen_capture_injected="true">
 <header id="header" class="header bg-white">
     <div class="navbar-container">
-      <a href="/?liberxue" title="访问 Weigel |iOS开发者 | 独立游戏开发者 " class="navbar-logo"> <img src="http://localhost:4000/style/images/motto.png" alt="Weigel |iOS开发者 | 独立游戏开发者 "> </a>
+      <a href="/?liberxue" title="访问 Weigel |iOS开发者 | 独立游戏开发者 " class="navbar-logo"> <img src="http://p4wibncwo.bkt.clouddn.com/motto.png" alt="Weigel |iOS开发者 | 独立游戏开发者 "> </a>
         <div class="navbar-menu">
                          
             <a href="http://localhost:4000/">首页</a>
@@ -94,7 +94,7 @@
     <h1 class="post-title" itemprop="name headline">
 	学生生管理系统 - Python3.0小例子</h1>
 		 <div class="post-data">  
-	 <time datetime="2017-06-23 00:00:00" itemprop="datePublished">发布时间：2017-06-23</time>
+	 <time datetime="2017-06-23" itemprop="datePublished">发布时间：2017-06-23</time>
      <a href="/tags#技术" title="访问 技术" data-hover="博客分类: 技术">博客分类: 技术</a>
     <a href="#read"> 阅读次数: comments</a> 
 			</div>
@@ -124,7 +124,7 @@
 		<h1 class="post-title" itemprop="name headline">
 			学生生管理系统 - Python3.0小例子</h1>
 		<div class="post-data">
-				<time datetime="2017-06-23 00:00:00" itemprop="datePublished">2017-06-23 00:00:00</time>
+				<time datetime="2017-06-23" itemprop="datePublished">2017-06-23 00:00:00</time>
 		</div>
 	</div>
 	<div id="post-content" class="post-content" itemprop="articleBody">
@@ -150,7 +150,7 @@
 <p>以前在学习Python的时候,写的一个小例子,简单的说是为了锻炼一下面向对象而写的,分享出来:</p>
 
 <p>这是一个简单的学生信息管理系统,通过不同的模块构建，最后达成我们得目的,先看下最终效果:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>------登录------
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>------登录------
 账号:
 admin
 密码:
@@ -164,21 +164,19 @@ admin
 根据成绩查找学生 代码:score
 4.根据姓名删除学生
 5.显示所有学生信息
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>大概的效果就是这样了,因为是初学的时候做的,很多东西没有去考虑,毕竟在开始的时候考虑太多,只会比较迷茫。我们先一步一步来咯。</p>
 
 <p>首先先定义个数据源来存放数据</p>
-<div class="highlighter-rouge"><pre class="highlight"><code># coding=utf-8
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code># coding=utf-8
 dict1 = {'name':'小明','age':18,'subject':'数学','score':99}
 list = [dict1]
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>然后我的习惯是先考虑下一步的情况,所以要分析我们接下来要做的事情:登录,选择以及相应的处理方法，通过结果示例,我们需要做的是添加学生,修改学生，查找学生，删除学生，显示所有学生:
 那么我就可以先定义几种方法(只是设想,并不是具体的代码):</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>登录: login
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>登录: login
 主控制选择台: selectInfo
 添加学生信息: addStudent
 修改学生信息: editStudent
@@ -190,26 +188,23 @@ list = [dict1]
 显示列表中所有学生信息: showStudentInfo
 用于将dict格式的显示成具体的格式: showStudentInfoWithDict
 删除学生信息: delStudentInfo
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>以上基本就是我们需要用的方法了，知道了我们需要做什么,那么接下来就是具体的实施了,首先就是我们需要一个开始系统的方法:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>begin(list)
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>begin(list)
+</code></pre></div></div>
 <p>简单暴力无污垢,也就是我们写到最后,就是为了这么一个begin.</p>
 
 <p>好了,接下来就是将begin进行完善。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>def begin(list):
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def begin(list):
 login()
 isEnd = False #用于判断是否结束系统
 #循环输入
 while(not isEnd):
 isEnd = selectedInfo(list)
 print('退出系统...')
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>为什么要这样写,因为我们需要做的就是开始的时候需要先登录,登录都过不去,那是肯定是进入不了操作台的。所以登录里面需要的操作就是一个界面用于输入账号和密码，还有的就是保证输入是正确。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>#login 登录模块，用于用户登录，如果登录失败，会重复登录
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#login 登录模块，用于用户登录，如果登录失败，会重复登录
 def login():
 isLogin = True#控制循环是否结束
 while(isLogin):
@@ -220,11 +215,10 @@ print('密码:')
 password = input()#输入密码
 if(username=='admin' and password=='123'):#判断用户名和密码是否正确
 isLogin = False
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>在保证了登录一定成功之后,那么就需要考虑的是登录操作台的功能。这个可以说是个大集合,集成了所有的功能。我们需要给出提示,然后分别去实现不同的功能。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>#主页面选择模块
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#主页面选择模块
 def selectedInfo(list):
 #手动先设定学生的信息
 code = ['name','age','subject','score']
@@ -262,11 +256,10 @@ elif sel==5:
 showStudentInfo(list)#显示所有学生
 print('是否退出系统 1/0:') 
 return int(input())
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>接下来的就是具体的实现方法了。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>#添加学生模块
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#添加学生模块
 添加学生主要就是对list内容的追加,需要注意的可能就是输错值会崩溃,需要用到try except去捕捉可能发生的错误,当然更具体的捕获可以自己去自定义。
 def addStudent(list):
 newDict = {} #用于创建一个新学生
@@ -290,11 +283,10 @@ print('您输入的数据类型不匹配，请重新输入!')
 else:#如果没有错误的发生，那么将字典追加到列表中
 list.append(newDict)	#将字典添加到list中
 print('学生添加成功!')
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>修改学生主要是从目标字典当中将目标取出来，然后对当前取出来的字典进行修改就可以了。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>#修改学生信息模块
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#修改学生信息模块
 def editStudentInput(dict):
 print('请选择如下选项进行修改:')
 print('1.年龄  2.科目 3.成绩')
@@ -311,10 +303,9 @@ elif sel == 3:
 print('请输入新成绩:')
 newScore = float(input())#重新给Score赋值
 dict['score'] = newScore
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>#修改学生信息 原理，在学生列表中寻找每一个学生对象，判断学生名称是否相同	
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#修改学生信息 原理，在学生列表中寻找每一个学生对象，判断学生名称是否相同	
 def editStudent(list):
 print('---修改学生信息----')
 print('请输入需要修改的学生名称: ')
@@ -324,25 +315,22 @@ if stuName == dict['name']:
 editStudentInput(dict)
 break;
 
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>显示学生就在遍历整个list,然后在根据具体的格式输出就可以了</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>#显示所有学生信息
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#显示所有学生信息
 def showStudentInfo(list):
 for dict in list:
 showStudentInfoWithDict(dict)
 
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>#用于将dict格式的显示成具体的格式
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#用于将dict格式的显示成具体的格式
 def showStudentInfoWithDict(dict):
 print('名称:',dict['name'],'年龄:',dict['age'],'科目:',dict['subject'],'成绩:',dict['score'])
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>删除也就是在整个list列表中去寻找,如果寻找到了之后,那么删除当前找到的dict字典就可以了</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>#删除学生信息
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#删除学生信息
 def delStudentInfo(list):
 print('请输入需要删除的学生姓名:')
 name = input()	#输入学生姓名
@@ -350,11 +338,10 @@ for dict in list:	#遍历整个学生列表
 if name == dict['name']: #判断当前的学生是否是寻找的学生
 list.remove(dict)			#如果是的，那么就删除当前的学生所代表的字典
 break
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>查找的也是同理,遍历整个list列表,然后找到输出就可以了</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>#查找方式一
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#查找方式一
 def searchStudentInfoA(list,type):#通过代码来识别不同的选择类型
 print('请输入查找学生的',type)
 newType = input()
@@ -366,10 +353,9 @@ newType = float(newType)
 for dict in list:		#遍历整个学生列表
 if newType == dict[type]: #判断当前的学生是否是寻找的学生
 showStudentInfoWithDict(dict)
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>#查找方式二				
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#查找方式二				
 def searchStudentInfoB(list,type):
 #1.姓名  2.年龄   3.成绩   4.科目
 if type ==1:
@@ -396,8 +382,7 @@ subject = input()
 for dict in list:		#遍历整个学生列表
 if subject == dict['subject']: #判断当前的学生是否是寻找的学生
 showStudentInfoWithDict(dict)
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>总的来说,这也是一种面向对象思想的简单表现吧。我们通过将功能模块化,将功能不要全部写在一个方法当中。这样分化了个体功能之后，使得在分配的任务的时候，大家都能各司其职。
 比如,XX去写登录,XX去写添加学生模块,XX去写修改之类的。让分工更加明确化。
@@ -444,7 +429,7 @@ showStudentInfoWithDict(dict)
             <div class="meta-item meta-copyright">
                 <div class="meta-copyright-info">
                     <a href="/" class="info-logo">
-                         <img src="http://localhost:4000/style/images/motto.png"   title="访问 Yanggenwei_blog" data-hover="Yanggenwei_blog" alt="Yanggenwei_blog" /> </a>
+                         <img src="http://p4wibncwo.bkt.clouddn.com/motto.png"   title="访问 Yanggenwei_blog" data-hover="Yanggenwei_blog" alt="Yanggenwei_blog" /> </a>
                     <div class="info-text">
                         <p>Theme is <a href="http://www.liberxue.com/2017/08/03/Jekyllthemes.html" title="访问 Jekyll liberxue主题"  data-hover="Jekyll liberxue"target="_blank">Jekyll liberxue</a> by <a href="http://www.liberxue.com/about" target="_blank">liberxue</a></p>
                         <p>Powered by <a href="http://localhost:4000/tags/#Jekyll" title="Jekyll" data-hover="Jekyll" target="_blank" rel="nofollow">Jekyll</a></p>

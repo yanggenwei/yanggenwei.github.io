@@ -26,7 +26,7 @@
   <meta name="keywords"  content="  CAEmitterLayer释放、动画和呈现粒子系统。它是比较完善的粒子渲染引擎了。所以我们在开始的时候需要去熟悉的它的属性，因为我们只需要设置它的属性就可以做到我们所想要的效果。粒子发射器的形状@property(copy) N..." property='og:description' />
   <meta name="description" content="nothing is more practicla than a good theory" />
   <link href="https://cdn.bootcss.com/highlight.js/9.10.0/styles/xcode.min.css" rel="stylesheet">
-  <link href="http://localhost:4000/style/style-liberxue.css" rel="stylesheet">
+  <link href="/style/style-liberxue.css" rel="stylesheet">
 
   <meta content='http://localhost:4000/2017/12/28/Animation-Particle.html' property='og:url' />
   <meta content="http://localhost:4000/2017/12/28/Animation-Particle.html|  CAEmitterLayer释放、动画和呈现粒子系统。它是比较完善的粒子渲染引擎了。所以我们在开始的时候需要去熟悉的它的属性，因为我们只需要设置它的属性就可以做到我们所想要的效果。粒子发射器的形状@property(copy) N..." property='og:description' />
@@ -39,7 +39,7 @@
 <body class="" gtools_scp_screen_capture_injected="true">
 <header id="header" class="header bg-white">
     <div class="navbar-container">
-      <a href="/?liberxue" title="访问 Weigel |iOS开发者 | 独立游戏开发者 " class="navbar-logo"> <img src="http://localhost:4000/style/images/motto.png" alt="Weigel |iOS开发者 | 独立游戏开发者 "> </a>
+      <a href="/?liberxue" title="访问 Weigel |iOS开发者 | 独立游戏开发者 " class="navbar-logo"> <img src="http://p4wibncwo.bkt.clouddn.com/motto.png" alt="Weigel |iOS开发者 | 独立游戏开发者 "> </a>
         <div class="navbar-menu">
                          
             <a href="http://localhost:4000/">首页</a>
@@ -94,7 +94,7 @@
     <h1 class="post-title" itemprop="name headline">
 	iOS中的粒子动画</h1>
 		 <div class="post-data">  
-	 <time datetime="2017-12-28 00:00:00" itemprop="datePublished">发布时间：2017-12-28</time>
+	 <time datetime="2017-12-28" itemprop="datePublished">发布时间：2017-12-28</time>
      <a href="/tags#技术" title="访问 技术" data-hover="博客分类: 技术">博客分类: 技术</a>
     <a href="#read"> 阅读次数: comments</a> 
 			</div>
@@ -134,7 +134,7 @@
 		<h1 class="post-title" itemprop="name headline">
 			iOS中的粒子动画</h1>
 		<div class="post-data">
-				<time datetime="2017-12-28 00:00:00" itemprop="datePublished">2017-12-28 00:00:00</time>
+				<time datetime="2017-12-28" itemprop="datePublished">2017-12-28 00:00:00</time>
 		</div>
 	</div>
 	<div id="post-content" class="post-content" itemprop="articleBody">
@@ -171,7 +171,7 @@
 
 <p>它是比较完善的粒子渲染引擎了。所以我们在开始的时候需要去熟悉的它的属性，因为我们只需要设置它的属性就可以做到我们所想要的效果。</p>
 
-<div class="language-swift highlighter-rouge"><pre class="highlight"><code><span class="n">粒子发射器的形状</span>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">粒子发射器的形状</span>
 <span class="kd">@property(copy)</span> <span class="kt">NSString</span> <span class="o">*</span><span class="n">emitterShape</span>
 
 <span class="nv">以下值</span><span class="p">:</span>
@@ -187,10 +187,9 @@
      <span class="kt">CA_AVAILABLE_STARTING</span> <span class="p">(</span><span class="mf">10.6</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">);</span>
 <span class="kt">CA_EXTERN</span> <span class="kt">NSString</span> <span class="o">*</span> <span class="n">const</span> <span class="n">kCAEmitterLayerSphere</span>
      <span class="kt">CA_AVAILABLE_STARTING</span> <span class="p">(</span><span class="mf">10.6</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="err">发射模式，这个字段规定了在特定形状上发射的具体形式是什么</span>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="err">发射模式，这个字段规定了在特定形状上发射的具体形式是什么</span>
 <span class="k">@property</span><span class="p">(</span><span class="n">copy</span><span class="p">)</span> <span class="n">NSString</span> <span class="o">*</span><span class="n">emitterMode</span><span class="p">;</span>
 
 <span class="n">CA_EXTERN</span> <span class="n">NSString</span> <span class="o">*</span> <span class="k">const</span> <span class="n">kCAEmitterLayerPoints</span>
@@ -201,8 +200,7 @@
     <span class="n">CA_AVAILABLE_STARTING</span> <span class="p">(</span><span class="mi">10</span><span class="p">.</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">);</span>
 <span class="n">CA_EXTERN</span> <span class="n">NSString</span> <span class="o">*</span> <span class="k">const</span> <span class="n">kCAEmitterLayerVolume</span>
     <span class="n">CA_AVAILABLE_STARTING</span> <span class="p">(</span><span class="mi">10</span><span class="p">.</span><span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">9</span><span class="p">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">.</span><span class="mi">0</span><span class="p">);</span>
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>具体的参数效果，看这篇文章，本来录了一些，好吧。比较懒，而且对于做重复的事情没啥意义。
 https://www.cnblogs.com/densefog/p/5424155.html</p>
@@ -355,11 +353,10 @@ https://www.cnblogs.com/densefog/p/5424155.html</p>
 <p>主要包含了两种，一种利用CAKeyframeAnimation 关键帧动画还有CAEmitterLayer做出来的粒子动画。</p>
 
 <p>###配置粒子动画参数</p>
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">readwrite</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span><span class="n">CAEmitterLayer</span> <span class="o">*</span><span class="n">emitterLayer</span><span class="p">;</span>
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">@property</span> <span class="p">(</span><span class="n">nonatomic</span><span class="p">,</span><span class="n">readwrite</span><span class="p">,</span><span class="n">strong</span><span class="p">)</span><span class="n">CAEmitterLayer</span> <span class="o">*</span><span class="n">emitterLayer</span><span class="p">;</span>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>- (void)configerEmitterLayer{
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- (void)configerEmitterLayer{
     self.emitterLayer = [[CAEmitterLayer alloc] init];
     //发射的位置
     [self.emitterLayer setEmitterPosition:self.likeButton.center];
@@ -410,10 +407,9 @@ https://www.cnblogs.com/densefog/p/5424155.html</p>
     [self.emitterLayer setEmitterCells:@[cell]];
     [self.view.layer addSublayer:self.emitterLayer];
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>关键的参数:
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>关键的参数:
 self.emitterLayer.emitterShape = kCAEmitterLayerCircle;
 我们想要的效果是点击的时候呈现圆形扩散,
 kCAEmitterLayerCircle的效果就是呈现圆形扩散，所以比较符合我们的设定
@@ -425,23 +421,21 @@ self.emitterLayer.emitterMode = kCAEmitterLayerOutline;
 cell.birthRate = 0.f; 不设置的话默认为0。
 
 其它的你们怎么喜欢怎么来咯。
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>然后就是那个心心点击的时候的动画:
 <img src="http://upload-images.jianshu.io/upload_images/1120896-b711ee4c3cfdd9c6.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/240" alt="心心动画.gif" /></p>
 
 <p>通过观察其实就是这个图片一个会一会小了，我们可以自己设置一下它的放大比例和缩小比例。
 我们实现这个动画的方式很多，但是关键帧动画相对来说比较简单(关键帧动画会单独写一篇，这里就简单看下实践吧)：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    CAKeyframeAnimation *animation = [CAKeyframeAnimation animationWithKeyPath:@"transform.scale"];
     animation.values = @[@1.4,@0.7,@1.0,@1.3,@1.0];
     animation.duration = 0.5;
     animation.calculationMode = kCAAnimationCubic;
     [self.likeButton.layer addAnimation:animation forKey:@"transform.scale"];
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>    kCAAnimationCubic 对关键帧为座标点的关键帧进行圆滑曲线相连后插值计算
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    kCAAnimationCubic 对关键帧为座标点的关键帧进行圆滑曲线相连后插值计算
 
     animationWithKeyPath的值：
 　  transform.scale = 比例轉換
@@ -468,11 +462,10 @@ cell.birthRate = 0.f; 不设置的话默认为0。
     shadowOffset 阴影偏移度
     shadowOpacity 阴影不透明度
     shadowRadius 阴影半径
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>嗯，配置也好了，动画也有了，下面就是开启粒子动画了</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>    //首先获取我们粒子动画单元。设置它的粒子数量
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>    //首先获取我们粒子动画单元。设置它的粒子数量
     CAEmitterCell *cell = self.emitterLayer.emitterCells[0];
     [cell setBirthRate:30.f];
     //然后再设置粒子layer的粒子数量，如果你只设置其中的一种，那是么有用的。
@@ -484,8 +477,7 @@ cell.birthRate = 0.f; 不设置的话默认为0。
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
           [self.emitterLayer setBirthRate:0.f];
     });
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>嗯。到这里点击心心的动画也就结束了。记得把上面的粒子动画放在上面的关键帧动画里哦。</p>
 
 <p>DEMO:
@@ -528,7 +520,7 @@ https://github.com/yanggenwei/GWAnimation/tree/master
             <div class="meta-item meta-copyright">
                 <div class="meta-copyright-info">
                     <a href="/" class="info-logo">
-                         <img src="http://localhost:4000/style/images/motto.png"   title="访问 Yanggenwei_blog" data-hover="Yanggenwei_blog" alt="Yanggenwei_blog" /> </a>
+                         <img src="http://p4wibncwo.bkt.clouddn.com/motto.png"   title="访问 Yanggenwei_blog" data-hover="Yanggenwei_blog" alt="Yanggenwei_blog" /> </a>
                     <div class="info-text">
                         <p>Theme is <a href="http://www.liberxue.com/2017/08/03/Jekyllthemes.html" title="访问 Jekyll liberxue主题"  data-hover="Jekyll liberxue"target="_blank">Jekyll liberxue</a> by <a href="http://www.liberxue.com/about" target="_blank">liberxue</a></p>
                         <p>Powered by <a href="http://localhost:4000/tags/#Jekyll" title="Jekyll" data-hover="Jekyll" target="_blank" rel="nofollow">Jekyll</a></p>

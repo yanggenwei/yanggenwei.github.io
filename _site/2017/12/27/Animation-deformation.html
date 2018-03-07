@@ -26,7 +26,7 @@
   <meta name="keywords"  content="形变动画即形状的旋转,位移,缩放和形状的变化。官网地址:  https://developer.apple.com/documentation/coregraphics/cgaffinetransform-rb5?language=o..." property='og:description' />
   <meta name="description" content="nothing is more practicla than a good theory" />
   <link href="https://cdn.bootcss.com/highlight.js/9.10.0/styles/xcode.min.css" rel="stylesheet">
-  <link href="http://localhost:4000/style/style-liberxue.css" rel="stylesheet">
+  <link href="/style/style-liberxue.css" rel="stylesheet">
 
   <meta content='http://localhost:4000/2017/12/27/Animation-deformation.html' property='og:url' />
   <meta content="http://localhost:4000/2017/12/27/Animation-deformation.html|形变动画即形状的旋转,位移,缩放和形状的变化。官网地址:  https://developer.apple.com/documentation/coregraphics/cgaffinetransform-rb5?language=o..." property='og:description' />
@@ -39,7 +39,7 @@
 <body class="" gtools_scp_screen_capture_injected="true">
 <header id="header" class="header bg-white">
     <div class="navbar-container">
-      <a href="/?liberxue" title="访问 Weigel |iOS开发者 | 独立游戏开发者 " class="navbar-logo"> <img src="http://localhost:4000/style/images/motto.png" alt="Weigel |iOS开发者 | 独立游戏开发者 "> </a>
+      <a href="/?liberxue" title="访问 Weigel |iOS开发者 | 独立游戏开发者 " class="navbar-logo"> <img src="http://p4wibncwo.bkt.clouddn.com/motto.png" alt="Weigel |iOS开发者 | 独立游戏开发者 "> </a>
         <div class="navbar-menu">
                          
             <a href="http://localhost:4000/">首页</a>
@@ -94,7 +94,7 @@
     <h1 class="post-title" itemprop="name headline">
 	iOS中的形变动画</h1>
 		 <div class="post-data">  
-	 <time datetime="2017-12-27 00:00:00" itemprop="datePublished">发布时间：2017-12-27</time>
+	 <time datetime="2017-12-27" itemprop="datePublished">发布时间：2017-12-27</time>
      <a href="/tags#技术" title="访问 技术" data-hover="博客分类: 技术">博客分类: 技术</a>
     <a href="#read"> 阅读次数: comments</a> 
 			</div>
@@ -134,7 +134,7 @@
 		<h1 class="post-title" itemprop="name headline">
 			iOS中的形变动画</h1>
 		<div class="post-data">
-				<time datetime="2017-12-27 00:00:00" itemprop="datePublished">2017-12-27 00:00:00</time>
+				<time datetime="2017-12-27" itemprop="datePublished">2017-12-27 00:00:00</time>
 		</div>
 	</div>
 	<div id="post-content" class="post-content" itemprop="articleBody">
@@ -180,12 +180,11 @@ CGAffineTransform很多人认为这是个类。抱歉这不是类。官网说的
 
 <p>是的。一种矩阵.
 打开CGAffineTransform.h 文件我们就可以看到的。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>struct CGAffineTransform {
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>struct CGAffineTransform {
   CGFloat a, b, c, d;
   CGFloat tx, ty;
 };
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>在程序内部我们对其进行变化的时候，其实内部代码改的就是这个矩阵的数据。
 具体的矩阵原理 传送门:
 https://www.zhihu.com/question/21351965</p>
@@ -197,7 +196,7 @@ https://www.zhihu.com/question/21351965</p>
 </blockquote>
 
 <p>方法定义:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>CG_EXTERN CGPoint CGPointApplyAffineTransform(CGPoint point,
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CG_EXTERN CGPoint CGPointApplyAffineTransform(CGPoint point,
   CGAffineTransform t) CG_AVAILABLE_STARTING(__MAC_10_0, __IPHONE_2_0);
 
 
@@ -209,8 +208,7 @@ __CGPointApplyAffineTransform(CGPoint point, CGAffineTransform t)
   p.y = (CGFloat)((double)t.b * point.x + (double)t.d * point.y + t.ty);
   return p;
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>可以看到,参数中的坐标点的计算方式
 即ax+cy+tx负责坐标x
@@ -221,7 +219,7 @@ __CGPointApplyAffineTransform(CGPoint point, CGAffineTransform t)
 通过对现有高度和宽度的转换来返回高度和宽度。</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>方法定义
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>方法定义
 CG_EXTERN CGSize CGSizeApplyAffineTransform(CGSize size, CGAffineTransform t)
   CG_AVAILABLE_STARTING(__MAC_10_0, __IPHONE_2_0);
 
@@ -234,8 +232,7 @@ __CGSizeApplyAffineTransform(CGSize size, CGAffineTransform t)
   s.height = (CGFloat)((double)t.b * size.width + (double)t.d * size.height);
   return s;
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>aw+ch可以得到宽度width
 bw+dh可以得到高度height
 这样想的其实也简单多了</p>
@@ -253,7 +250,7 @@ bw+dh可以得到高度height
 直接创建一个新的变换矩阵</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>//设置完整的变形矩阵
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//设置完整的变形矩阵
 CGAffineTransformMake
 //旋转
 CGAffineTransformMakeRotation
@@ -261,13 +258,11 @@ CGAffineTransformMakeRotation
 CGAffineTransformMakeScale
 //位移
 CGAffineTransformMakeTranslation
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>CGAffineTransformMake
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CGAffineTransformMake
 它表示一个新的仿射变换矩阵
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <blockquote>
   <p>方法定义:CGAffineTransform CGAffineTransformMake(CGFloat a, CGFloat b, CGFloat c, CGFloat d, CGFloat tx, CGFloat ty);</p>
@@ -290,20 +285,18 @@ CGAffineTransformMakeTranslation
 创建一个新的或者在原来基础上修改的变换矩阵。</p>
 </blockquote>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>方法:
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>方法:
 CGAffineTransformTranslate
-</code></pre>
-</div>
+</code></pre></div></div>
 <p><img src="http://upload-images.jianshu.io/upload_images/1120896-c770dfbbec853014.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/240" alt="translate.gif" /></p>
 
 <p>它的属性设置图:
 <img src="http://upload-images.jianshu.io/upload_images/1120896-056fb684842fda44.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/640" alt="translate.png" />
 根据上面的计算公式,设置tx,ty的值就直接相当于设置它的坐标x,y了。通过设置它的坐标我们就可以很轻松的实现它的位移操作了。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>CGAffineTransformScale 
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CGAffineTransformScale 
 用于图形缩放
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>方法定义:</p>
 <blockquote>
@@ -314,10 +307,9 @@ CGAffineTransformTranslate
 
 <p>sx,sy的值等于1为不变,小于1为缩小,大于1为放大</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>CGAffineTransformRotate
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CGAffineTransformRotate
 用于图形旋转
-</code></pre>
-</div>
+</code></pre></div></div>
 <blockquote>
   <p>方法定义
 CGAffineTransform CGAffineTransformRotate(CGAffineTransform t, CGFloat angle);</p>
@@ -329,14 +321,13 @@ CGAffineTransform CGAffineTransformRotate(CGAffineTransform t, CGFloat angle);</
 </blockquote>
 
 <p>官网的翻译意思是这样的。然后经过试验,在iOS中 正数是顺时针,负数才是逆时针的。我是不是该提点建议啥的，在线等，蛮急的。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>case GWAnimationRotatingClockwise://顺时针
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>case GWAnimationRotatingClockwise://顺时针
             self.showView.transform = CGAffineTransformRotate(self.showView.transform, 90);
             break;
 case GWAnimationRotatingAnticlockwise://逆时针
             self.showView.transform = CGAffineTransformRotate(self.showView.transform, -90);
             break;
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>其原理图如下:
 <img src="http://upload-images.jianshu.io/upload_images/1120896-c053eeb1b6720665.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/240" alt="旋转矩阵.gif" /></p>
 
@@ -347,10 +338,9 @@ case GWAnimationRotatingAnticlockwise://逆时针
 
 <p><img src="http://upload-images.jianshu.io/upload_images/1120896-f0d38af10a2308fa.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/240" alt="rotate.gif" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>CGAffineTransformInvert
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CGAffineTransformInvert
 反转当前图形的坐标
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <blockquote>
   <p>Inversion is generally used to provide reverse transformation of points within transformed objects. Given the coordinates (x,y), which have been transformed by a given matrix to new coordinates (x’,y’), transforming the coordinates (x’,y’) by the inverse matrix produces the original coordinates (x,y).
@@ -359,10 +349,9 @@ case GWAnimationRotatingAnticlockwise://逆时针
 
 <p><img src="http://upload-images.jianshu.io/upload_images/1120896-d14e1d1194adf499.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/240" alt="invert.gif" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>CGAffineTransformConcat
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CGAffineTransformConcat
 将两个transform组合在一起。
-</code></pre>
-</div>
+</code></pre></div></div>
 <blockquote>
   <p>方法定义
 CGAffineTransform CGAffineTransformConcat(CGAffineTransform t1, CGAffineTransform t2);
@@ -376,17 +365,16 @@ CGAffineTransform CGAffineTransformConcat(CGAffineTransform t1, CGAffineTransfor
 <blockquote>
   <p>Evaluating Affine Transforms
 判断类型</p>
-  <div class="highlighter-rouge"><pre class="highlight"><code>CGAffineTransformIsIdentity
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CGAffineTransformIsIdentity
 检查仿射转换是否为恒等变换。
 CGAffineTransformEqualToTransform
 检查两个仿射变换是否相等。
-</code></pre>
-  </div>
+</code></pre></div>  </div>
 </blockquote>
 
 <p>了解了API之后,我们就开始实践了:
 设置枚举值,我们可以方便的使用</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>typedef NS_ENUM(NSInteger,GWDeformationType){
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>typedef NS_ENUM(NSInteger,GWDeformationType){
     GWAnimationDisplacementUp,//位移
     GWAnimationDisplacementDown,
     GWAnimationDisplacementLeft,
@@ -399,11 +387,10 @@ CGAffineTransformEqualToTransform
     GWAnimationInvert,       //反转
     GWAnimationConcat       //合并
 };
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>调用API就很简单了:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>        case GWAnimationDisplacementUp://上移
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        case GWAnimationDisplacementUp://上移
             self.showView.transform  = CGAffineTransformTranslate(self.showView.transform, 0,-10);
             break;
         case GWAnimationDisplacementDown://下移
@@ -427,13 +414,12 @@ CGAffineTransformEqualToTransform
         case GWAnimationRotatingAnticlockwise://逆时针
             self.showView.transform = CGAffineTransformRotate(self.showView.transform, -90);
             break;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>单独的使用并无什么乐趣，我们可以做个简单的动画如下图所示:
 <img src="http://upload-images.jianshu.io/upload_images/1120896-645466528185f9e9.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/240" alt="形变.gif" /></p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>[UIView animateWithDuration:1 animations:^{
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[UIView animateWithDuration:1 animations:^{
                 self.showView.transform = CGAffineTransformMakeScale(1.5,1.5);
      } completion:^(BOOL finished) {
                 [UIView animateWithDuration:1 animations:^{
@@ -447,8 +433,7 @@ CGAffineTransformEqualToTransform
                     }];
                 }];
             }];
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>DEMO:
 https://github.com/yanggenwei/GWAnimation/tree/master</p>
@@ -491,7 +476,7 @@ https://github.com/yanggenwei/GWAnimation/tree/master</p>
             <div class="meta-item meta-copyright">
                 <div class="meta-copyright-info">
                     <a href="/" class="info-logo">
-                         <img src="http://localhost:4000/style/images/motto.png"   title="访问 Yanggenwei_blog" data-hover="Yanggenwei_blog" alt="Yanggenwei_blog" /> </a>
+                         <img src="http://p4wibncwo.bkt.clouddn.com/motto.png"   title="访问 Yanggenwei_blog" data-hover="Yanggenwei_blog" alt="Yanggenwei_blog" /> </a>
                     <div class="info-text">
                         <p>Theme is <a href="http://www.liberxue.com/2017/08/03/Jekyllthemes.html" title="访问 Jekyll liberxue主题"  data-hover="Jekyll liberxue"target="_blank">Jekyll liberxue</a> by <a href="http://www.liberxue.com/about" target="_blank">liberxue</a></p>
                         <p>Powered by <a href="http://localhost:4000/tags/#Jekyll" title="Jekyll" data-hover="Jekyll" target="_blank" rel="nofollow">Jekyll</a></p>

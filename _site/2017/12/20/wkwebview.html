@@ -26,7 +26,7 @@
   <meta name="keywords"  content="本章内容:1. 为WKWebview添加进度条2. 实现一个图片浏览器,并且可以保存本地3. 实现打开网页,获取所有可用图片为WKWebview添加进度条这个其实比较简单：1. 将UIProgressView添加到WKWebview中..." property='og:description' />
   <meta name="description" content="nothing is more practicla than a good theory" />
   <link href="https://cdn.bootcss.com/highlight.js/9.10.0/styles/xcode.min.css" rel="stylesheet">
-  <link href="http://localhost:4000/style/style-liberxue.css" rel="stylesheet">
+  <link href="/style/style-liberxue.css" rel="stylesheet">
 
   <meta content='http://localhost:4000/2017/12/20/wkwebview.html' property='og:url' />
   <meta content="http://localhost:4000/2017/12/20/wkwebview.html|本章内容:1. 为WKWebview添加进度条2. 实现一个图片浏览器,并且可以保存本地3. 实现打开网页,获取所有可用图片为WKWebview添加进度条这个其实比较简单：1. 将UIProgressView添加到WKWebview中..." property='og:description' />
@@ -39,7 +39,7 @@
 <body class="" gtools_scp_screen_capture_injected="true">
 <header id="header" class="header bg-white">
     <div class="navbar-container">
-      <a href="/?liberxue" title="访问 Weigel |iOS开发者 | 独立游戏开发者 " class="navbar-logo"> <img src="http://localhost:4000/style/images/motto.png" alt="Weigel |iOS开发者 | 独立游戏开发者 "> </a>
+      <a href="/?liberxue" title="访问 Weigel |iOS开发者 | 独立游戏开发者 " class="navbar-logo"> <img src="http://p4wibncwo.bkt.clouddn.com/motto.png" alt="Weigel |iOS开发者 | 独立游戏开发者 "> </a>
         <div class="navbar-menu">
                          
             <a href="http://localhost:4000/">首页</a>
@@ -94,7 +94,7 @@
     <h1 class="post-title" itemprop="name headline">
 	利用WKWebview实现大图浏览</h1>
 		 <div class="post-data">  
-	 <time datetime="2017-12-20 00:00:00" itemprop="datePublished">发布时间：2017-12-20</time>
+	 <time datetime="2017-12-20" itemprop="datePublished">发布时间：2017-12-20</time>
      <a href="/tags#技术" title="访问 技术" data-hover="博客分类: 技术">博客分类: 技术</a>
     <a href="#read"> 阅读次数: comments</a> 
 			</div>
@@ -134,7 +134,7 @@
 		<h1 class="post-title" itemprop="name headline">
 			利用WKWebview实现大图浏览</h1>
 		<div class="post-data">
-				<time datetime="2017-12-20 00:00:00" itemprop="datePublished">2017-12-20 00:00:00</time>
+				<time datetime="2017-12-20" itemprop="datePublished">2017-12-20 00:00:00</time>
 		</div>
 	</div>
 	<div id="post-content" class="post-content" itemprop="articleBody">
@@ -164,26 +164,24 @@
      
 </p>
 <p>本章内容:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>1. 为WKWebview添加进度条
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 为WKWebview添加进度条
 2. 实现一个图片浏览器,并且可以保存本地
 3. 实现打开网页,获取所有可用图片
-</code></pre>
-</div>
+</code></pre></div></div>
 <p><img src="http://upload-images.jianshu.io/upload_images/1120896-7423632db8f296f7.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/200" alt="网页加载.gif" /></p>
 
 <p><img src="http://upload-images.jianshu.io/upload_images/1120896-1850881c521f1cf0.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/200" alt="最终效果.gif" /></p>
 
 <h2 id="为wkwebview添加进度条">为WKWebview添加进度条</h2>
 <p>这个其实比较简单：</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>1. 将UIProgressView添加到WKWebview中
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1. 将UIProgressView添加到WKWebview中
 2. 监听WKWebview的estimatedProgress属性值变化
 3. 将estimatedProgress的数据同步到progressView的progress值
 4. 移除监听 
 5. 自定义一点特效啥的。这个大家怎么开心怎么来
-</code></pre>
-</div>
+</code></pre></div></div>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>第一步:
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>第一步:
 初始化UIProgressView
 - (UIProgressView *)progressView{
     if(!_progressView){
@@ -224,8 +222,7 @@
 - (void)dealloc {
     [self removeObserver:self forKeyPath:@"estimatedProgress"];
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>这里要说的就是为什么要用到transform形变.因为你直接在frame中设置它的宽，对于它来说没有影响，它是有默认值的。
 那么通过transform形变的设置,我们就可以设置它的高度了。</p>
 
@@ -237,10 +234,9 @@
 <p>整个图片浏览器的组成是:
 <img src="http://upload-images.jianshu.io/upload_images/1120896-652ed97354a4357e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/200" alt="层次.png" />
 从图中就可以简单看出来了:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>UIScrollView+若干UIImageView 形成了图片的浏览
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>UIScrollView+若干UIImageView 形成了图片的浏览
 UIView+UIButton形成了底层按钮的返回和保存按钮。
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>视图拼凑起来很简单,所以我们就来分析它的功能:</p>
 <h1 id="对外方法的实现">对外方法的实现</h1>
 <p>一切都要根据具体的工作需求来定，而我目前的需求是 得到网页中的所有可用图片,并且显示当前点击的图片。
@@ -248,7 +244,7 @@ UIView+UIButton形成了底层按钮的返回和保存按钮。
 <h2 id="为什么是图片地址而不是加载好所有图片传过来呢">为什么是图片地址而不是加载好所有图片传过来呢？</h2>
 <p>因为,在实际使用中,流量可是很值钱的啊，你一下全给加载好了，很多人家又不需要看的，你噼里啪啦的全给搞好了，这就有点尴尬了。
 所以最终的结果就是这样的:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
 /**
  快速构建图片浏览器
 
@@ -258,17 +254,15 @@ UIView+UIButton形成了底层按钮的返回和保存按钮。
  */
 + (instancetype)browseImages:(NSArray *)images
            selectedImagePath:(NSString *)selectedImagePath;
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>而为什么选中的图片传的是路径却不是坐标尼,因为我哪知道你点的是哪个,除非你网页中设置的好好的。但是我自己实现比较麻烦尼，所以我还缺个前端高手，最好是个萌妹子尼（请祝福我回去不要跪榴莲）。</p>
 
 <h1 id="uiimageview图片如何自适应">UIImageView图片如何自适应</h1>
 <p>关于这个问题,说白就是多读书,多看源码,少玩游戏,少睡觉。因为这玩意完全就是属性值啊。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>//适配屏幕
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//适配屏幕
 [imageView setContentScaleFactor:[[UIScreen mainScreen] scale]];
-</code></pre>
-</div>
-<div class="highlighter-rouge"><pre class="highlight"><code>//设置图片的显示模式 
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//设置图片的显示模式 
  imageView.contentMode =  UIViewContentModeScaleAspectFit;
 
 下面附送的是具体的模式枚举
@@ -301,9 +295,8 @@ typedef NS_ENUM(NSInteger, UIViewContentMode) {
 //右下
     UIViewContentModeBottomRight,
 };
-</code></pre>
-</div>
-<div class="highlighter-rouge"><pre class="highlight"><code>imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>imageView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 autoresizingMask的属性，它对应的是一个枚举的值（如下），属性的意思就是自动调整子控件与父控件中间的位置，宽高。
 enum {
   //就是不自动调整
@@ -320,15 +313,13 @@ enum {
    //自动调整与superView底部的距离，也就是说，与superView顶部的距离不变。
    UIViewAutoresizingFlexibleBottomMargin = 1 &lt;&lt; 5
 };
-</code></pre>
-</div>
-<div class="highlighter-rouge"><pre class="highlight"><code>裁剪边缘什么的就比较常见.主要用于一些奇形怪状的图片.
+</code></pre></div></div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>裁剪边缘什么的就比较常见.主要用于一些奇形怪状的图片.
 imageView.clipsToBounds  = YES;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h1 id="如何实现图片的下载">如何实现图片的下载</h1>
-<div class="highlighter-rouge"><pre class="highlight"><code>这个就比较简单的通过异步加载,然后设置图片的时候别忘记将其放在主线程中。不然会导致加载延迟。毕竟异步线程它比较任性吧。
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>这个就比较简单的通过异步加载,然后设置图片的时候别忘记将其放在主线程中。不然会导致加载延迟。毕竟异步线程它比较任性吧。
 - (void)downloadImageWithPath:(NSString *)imagePath
                     imageView:(UIImageView *)imageView{
     [SVProgressHUD show];
@@ -348,19 +339,17 @@ imageView.clipsToBounds  = YES;
         });
     });
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h1 id="图片的加载">图片的加载</h1>
 <p>这里可以选择，进入界面之后，加载全部内容，那么就需要在添加UIImageView的时候，利用上述方法设置图片了。
 那么我选择的是每次滑动的时候去加载图片，如果已经加载的图片就不用再加载了。
 那么我们就需要设置UIScrollView的代理方法</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>//滑动完成的时候执行
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//滑动完成的时候执行
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>我们通过该方法在每次滑动完成的时候去加载,先获取当前滑动位置的图片视图对象,然后进行加载就可以了。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     [SVProgressHUD dismiss];
     NSInteger index = scrollView.contentOffset.x/kSCREENWIDTH;
     UIImageView *imageView = (UIImageView *)scrollView.subviews[index];
@@ -369,14 +358,12 @@ imageView.clipsToBounds  = YES;
     if(!imageView.image)
         [self downloadImageWithPath:self.image_list[index] imageView:imageView];
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h1 id="如何保存图片">如何保存图片</h1>
 <p>在写之前请在info.plist文件中加入访问本地图片权限,不然会崩溃的哦</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>Privacy - Photo Library Usage Description
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Privacy - Photo Library Usage Description
+</code></pre></div></div>
 
 <p>将相机保存到本地的方法有很多种:
 https://www.jianshu.com/p/bf20733ba19b
@@ -384,11 +371,10 @@ https://www.jianshu.com/p/bf20733ba19b
 然后我就使用了引用Photos库的方法</p>
 
 <p>想要使用的话记得导入:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>#import &lt;Photos/Photos.h&gt;
-</code></pre>
-</div>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#import &lt;Photos/Photos.h&gt;
+</code></pre></div></div>
 <p>下面的方法使用起来就比价简单了，当然我对它的实现原理更加感兴趣，找个时间把原理实现添加到计划中吧。嗯，就这么愉快的说定了。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>#pragma mark 下载图片
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>#pragma mark 下载图片
 - (void)downLoadButtonAction{
     NSInteger index = self.scrollView.contentOffset.x/kSCREENWIDTH;
     UIImageView *imageView = (UIImageView *)self.scrollView.subviews[index];
@@ -404,25 +390,22 @@ https://www.jianshu.com/p/bf20733ba19b
         }
     }];
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>关于浏览器部分基本就结束了,还有一个就是记得给UIScrollView添加一个点击就消失的手势事件:</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>//为滚动视图添加点击消失的事件
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//为滚动视图添加点击消失的事件
  UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(backAction)];
  [_scrollView addGestureRecognizer:tap];
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h1 id="如何获取网页中的所有图片">如何获取网页中的所有图片</h1>
 <p>这一个步骤就得交给代理来做了。
 首先我们就需要实现</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>//网页加载完成
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//网页加载完成
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation;
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <p>在真实的情况下,有很多图片貌似获取不到,获取的里面也包含很多的空串,所以我们需要把得到的图片列表过滤一下。所以之前说的前端萌妹子是多么重要。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>static  NSString * const imagesJS =
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>static  NSString * const imagesJS =
     @"function getImages(){\
     var objs = document.getElementsByTagName(\"img\");\
     var imgScr = '';\
@@ -444,14 +427,13 @@ https://www.jianshu.com/p/bf20733ba19b
             }
         }
     }];
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h1 id="如何设置点击事件">如何设置点击事件</h1>
 
 <p>点击事件,我觉得还是通过与前端的配合,他设置好之后我们直接调用比较好一点，然而我并没有这样可爱的萌妹子，所以,只能用js获取并且给它设置点击事件了。</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>//这段代码是显示单独的图片。
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//这段代码是显示单独的图片。
 [webView evaluateJavaScript:@"function registerImageClickAction(){\
      var imgs = document.getElementsByTagName('img');\
      for(var i=0;i&lt;imgs.length;i++){\
@@ -463,10 +445,9 @@ https://www.jianshu.com/p/bf20733ba19b
      }" completionHandler:nil];
     
     [webView evaluateJavaScript:@"registerImageClickAction();"completionHandler:nil];
-</code></pre>
-</div>
+</code></pre></div></div>
 <p>设置了之后，我们就可以看到点击图片然后显示的场景了。然而我们需要自己的图片浏览器啊，所有我们就要拦截点击事件，拦截到之后换上我们自己的控件进行显示。</p>
-<div class="highlighter-rouge"><pre class="highlight"><code>//在发送请求之前，决定是否跳转,
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//在发送请求之前，决定是否跳转,
 -(void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
     
     //如果是跳转一个新页面
@@ -479,8 +460,7 @@ https://www.jianshu.com/p/bf20733ba19b
        decisionHandler(WKNavigationActionPolicyAllow);
     }
 }
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <hr />
 <p>DEMO:https://github.com/yanggenwei/GWWebviewPro
@@ -522,7 +502,7 @@ https://www.jianshu.com/p/bf20733ba19b
             <div class="meta-item meta-copyright">
                 <div class="meta-copyright-info">
                     <a href="/" class="info-logo">
-                         <img src="http://localhost:4000/style/images/motto.png"   title="访问 Yanggenwei_blog" data-hover="Yanggenwei_blog" alt="Yanggenwei_blog" /> </a>
+                         <img src="http://p4wibncwo.bkt.clouddn.com/motto.png"   title="访问 Yanggenwei_blog" data-hover="Yanggenwei_blog" alt="Yanggenwei_blog" /> </a>
                     <div class="info-text">
                         <p>Theme is <a href="http://www.liberxue.com/2017/08/03/Jekyllthemes.html" title="访问 Jekyll liberxue主题"  data-hover="Jekyll liberxue"target="_blank">Jekyll liberxue</a> by <a href="http://www.liberxue.com/about" target="_blank">liberxue</a></p>
                         <p>Powered by <a href="http://localhost:4000/tags/#Jekyll" title="Jekyll" data-hover="Jekyll" target="_blank" rel="nofollow">Jekyll</a></p>
