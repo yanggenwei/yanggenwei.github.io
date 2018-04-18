@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>iOS中的形变动画</title>
+  <meta name="description" content="形变动画即形状的旋转,位移,缩放和形状的变化。">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/%E5%8A%A8%E7%94%BB/2017/12/27/Animation-deformation.html">
+  <link rel="alternate" type="application/atom+xml" title="Your awesome title" href="http://localhost:4000/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index.html">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive.html">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category.html">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about.html">about</a>
+				</li>			
+			
+		</div>
+		<div class="description"> Your motto </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/jekyll" title="Github">
+					<img width="19px" height="19px" src="/images/github.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="/feed.xml" title="RSS">
+					<img width="19px" height="19px" src="/images/rss.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/jekyllrb" title="Twitter">
+					<img width="19px" height="19px" src="/images/twitter.png"/>
+				</a>
+			</li>
+		</ul>		
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+  <br>
+  <header class="post-header">
+    <h1 class="post-title">iOS中的形变动画</h1>
+    <p class="post-meta">Dec 27, 2017</p>
+  </header>
+
+  <article class="post-content">
+    <p><small>
+形变动画即形状的旋转,位移,缩放和形状的变化。</small></p>
+
+<p>官网地址:</p>
+<blockquote>
+  <p>https://developer.apple.com/documentation/coregraphics/cgaffinetransform-rb5?language=objc</p>
+</blockquote>
+
+<p>要想达到我们所需要的结果，需要使用到CGAffineTransform
+CGAffineTransform很多人认为这是个类。抱歉这不是类。官网说的很清楚。</p>
+<blockquote>
+  <p>An affine transformation matrix for use in drawing 2D graphics.
+一个用于绘制2D图形的仿射变换矩阵。</p>
+</blockquote>
+
+<p>是的。一种矩阵.
+打开CGAffineTransform.h 文件我们就可以看到的。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>struct CGAffineTransform {
+  CGFloat a, b, c, d;
+  CGFloat tx, ty;
+};
+</code></pre></div></div>
+<p>在程序内部我们对其进行变化的时候，其实内部代码改的就是这个矩阵的数据。
+具体的矩阵原理 传送门:
+https://www.zhihu.com/question/21351965</p>
+
+<p>原理看不懂，我们就来看看源码:</p>
+<blockquote>
+  <p>CGPointApplyAffineTransform
+返回一个已存在点的仿射变换所产生的点。</p>
+</blockquote>
+
+<p>方法定义:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CG_EXTERN CGPoint CGPointApplyAffineTransform(CGPoint point,
+  CGAffineTransform t) CG_AVAILABLE_STARTING(__MAC_10_0, __IPHONE_2_0);
+
+
+CG_INLINE CGPoint
+__CGPointApplyAffineTransform(CGPoint point, CGAffineTransform t)
+{
+  CGPoint p;
+  p.x = (CGFloat)((double)t.a * point.x + (double)t.c * point.y + t.tx);
+  p.y = (CGFloat)((double)t.b * point.x + (double)t.d * point.y + t.ty);
+  return p;
+}
+</code></pre></div></div>
+
+<p>可以看到,参数中的坐标点的计算方式
+即ax+cy+tx负责坐标x
+即bx+dy+ty负责坐标y</p>
+
+<blockquote>
+  <p>CGSizeApplyAffineTransform
+通过对现有高度和宽度的转换来返回高度和宽度。</p>
+</blockquote>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>方法定义
+CG_EXTERN CGSize CGSizeApplyAffineTransform(CGSize size, CGAffineTransform t)
+  CG_AVAILABLE_STARTING(__MAC_10_0, __IPHONE_2_0);
+
+
+CG_INLINE CGSize
+__CGSizeApplyAffineTransform(CGSize size, CGAffineTransform t)
+{
+  CGSize s;
+  s.width = (CGFloat)((double)t.a * size.width + (double)t.c * size.height);
+  s.height = (CGFloat)((double)t.b * size.width + (double)t.d * size.height);
+  return s;
+}
+</code></pre></div></div>
+<p>aw+ch可以得到宽度width
+bw+dh可以得到高度height
+这样想的其实也简单多了</p>
+
+<p>要是还不行，那只能好好学学高中的矩阵入门基础了,大学的线性代数。</p>
+
+<blockquote>
+  <p>CG_INLINE 表示内联,即在编译的时候将函数体替换函数调用，从而不需要将parameter，return address进行push/pop stack的操作，从而加速app的运行，然而，会增加二进制文件的大小。</p>
+</blockquote>
+
+<p>CGAffineTransform它所定义的类型很多,我们来介绍一下:</p>
+
+<blockquote>
+  <p>Creating an Affine Transformation Matrix
+直接创建一个新的变换矩阵</p>
+</blockquote>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>//设置完整的变形矩阵
+CGAffineTransformMake
+//旋转
+CGAffineTransformMakeRotation
+//缩放
+CGAffineTransformMakeScale
+//位移
+CGAffineTransformMakeTranslation
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CGAffineTransformMake
+它表示一个新的仿射变换矩阵
+</code></pre></div></div>
+
+<blockquote>
+  <p>方法定义:CGAffineTransform CGAffineTransformMake(CGFloat a, CGFloat b, CGFloat c, CGFloat d, CGFloat tx, CGFloat ty);</p>
+</blockquote>
+
+<p>CGAffineTransformMake 可以设置比较完整的矩阵.通过它就可以直接设置旋转,缩放,位移的操作的矩阵
+它的属性设置可以看下图:
+<img src="http://upload-images.jianshu.io/upload_images/1120896-11a79ec4ad3dd8d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/240" alt="矩阵模型.png" /></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1120896-c9ffe0188ec7398a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/240" alt="计算.png" /></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1120896-a1e4ec4a65c5f4e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/240" alt="结果.png" />
+可以看到我们主要是设置它的6个值,最后算出它的坐标x,y。其中第三列的0,0,1是固定不动的哦。</p>
+
+<p>以上的方法,在调用的时候每次都是初始值。
+以下的方法,在调用的时候都会之前已经修改过的基础上进行变换。</p>
+
+<blockquote>
+  <p>Modifying Affine Transformations
+创建一个新的或者在原来基础上修改的变换矩阵。</p>
+</blockquote>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>方法:
+CGAffineTransformTranslate
+</code></pre></div></div>
+<p><img src="http://upload-images.jianshu.io/upload_images/1120896-c770dfbbec853014.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/240" alt="translate.gif" /></p>
+
+<p>它的属性设置图:
+<img src="http://upload-images.jianshu.io/upload_images/1120896-056fb684842fda44.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/640" alt="translate.png" />
+根据上面的计算公式,设置tx,ty的值就直接相当于设置它的坐标x,y了。通过设置它的坐标我们就可以很轻松的实现它的位移操作了。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CGAffineTransformScale 
+用于图形缩放
+</code></pre></div></div>
+
+<p>方法定义:</p>
+<blockquote>
+  <p>CGAffineTransform CGAffineTransformScale(CGAffineTransform t, CGFloat sx, CGFloat sy);</p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1120896-d09816b747f46224.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/240" alt="scale.gif" /></p>
+
+<p>sx,sy的值等于1为不变,小于1为缩小,大于1为放大</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CGAffineTransformRotate
+用于图形旋转
+</code></pre></div></div>
+<blockquote>
+  <p>方法定义
+CGAffineTransform CGAffineTransformRotate(CGAffineTransform t, CGFloat angle);</p>
+</blockquote>
+
+<blockquote>
+  <p>In iOS, a positive value specifies counterclockwise rotation and a negative value specifies clockwise rotation. In macOS, a positive value specifies clockwise rotation and a negative value specifies counterclockwise rotation.
+在iOS中，一个正值指定了逆时针旋转，而负值则指定顺时针旋转。在macOS中，一个正的值指定顺时针旋转，一个负的值指定逆时针旋转。</p>
+</blockquote>
+
+<p>官网的翻译意思是这样的。然后经过试验,在iOS中 正数是顺时针,负数才是逆时针的。我是不是该提点建议啥的，在线等，蛮急的。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>case GWAnimationRotatingClockwise://顺时针
+            self.showView.transform = CGAffineTransformRotate(self.showView.transform, 90);
+            break;
+case GWAnimationRotatingAnticlockwise://逆时针
+            self.showView.transform = CGAffineTransformRotate(self.showView.transform, -90);
+            break;
+</code></pre></div></div>
+<p>其原理图如下:
+<img src="http://upload-images.jianshu.io/upload_images/1120896-c053eeb1b6720665.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/240" alt="旋转矩阵.gif" /></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1120896-d74d1688126769c1.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/240" alt="旋转计算.gif" /></p>
+
+<p>填值参考:
+ <img src="http://upload-images.jianshu.io/upload_images/1120896-87655ce1e9d0a14d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="弧线参考图.png" /></p>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1120896-f0d38af10a2308fa.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/240" alt="rotate.gif" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CGAffineTransformInvert
+反转当前图形的坐标
+</code></pre></div></div>
+
+<blockquote>
+  <p>Inversion is generally used to provide reverse transformation of points within transformed objects. Given the coordinates (x,y), which have been transformed by a given matrix to new coordinates (x’,y’), transforming the coordinates (x’,y’) by the inverse matrix produces the original coordinates (x,y).
+反转通常用于提供转换对象内的点的反向转换。给定的坐标(x，y)已经被一个给定的矩阵转换为新的坐标(x’，y’)，通过逆矩阵变换坐标(x’，y’)产生原始坐标(x，y)。</p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1120896-d14e1d1194adf499.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/240" alt="invert.gif" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CGAffineTransformConcat
+将两个transform组合在一起。
+</code></pre></div></div>
+<blockquote>
+  <p>方法定义
+CGAffineTransform CGAffineTransformConcat(CGAffineTransform t1, CGAffineTransform t2);
+返回一个新的transform:  t’ = t1*t2.</p>
+</blockquote>
+
+<p><img src="http://upload-images.jianshu.io/upload_images/1120896-8b64ab6fa47cfe14.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/340" alt="合并.gif" /></p>
+
+<p><em>注意，矩阵运算不是交换——你连接矩阵的顺序是很重要的。也就是说，乘以矩阵t1乘以矩阵t2的结果并不一定等于乘以矩阵t1乘以矩阵t1。</em></p>
+
+<blockquote>
+  <p>Evaluating Affine Transforms
+判断类型</p>
+  <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>CGAffineTransformIsIdentity
+检查仿射转换是否为恒等变换。
+CGAffineTransformEqualToTransform
+检查两个仿射变换是否相等。
+</code></pre></div>  </div>
+</blockquote>
+
+<p>了解了API之后,我们就开始实践了:
+设置枚举值,我们可以方便的使用</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>typedef NS_ENUM(NSInteger,GWDeformationType){
+    GWAnimationDisplacementUp,//位移
+    GWAnimationDisplacementDown,
+    GWAnimationDisplacementLeft,
+    GWAnimationDisplacementRight,
+    GWAnimationZoomEnlargement,        //缩放
+    GWAnimationZoomOut,
+    GWAnimationRotatingClockwise,    //旋转
+    GWAnimationRotatingAnticlockwise,
+    GWAnimationDeformation,  //形变
+    GWAnimationInvert,       //反转
+    GWAnimationConcat       //合并
+};
+</code></pre></div></div>
+
+<p>调用API就很简单了:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>        case GWAnimationDisplacementUp://上移
+            self.showView.transform  = CGAffineTransformTranslate(self.showView.transform, 0,-10);
+            break;
+        case GWAnimationDisplacementDown://下移
+            self.showView.transform  = CGAffineTransformTranslate(self.showView.transform, 0,10);
+            break;
+        case GWAnimationDisplacementLeft://左移
+            self.showView.transform  = CGAffineTransformTranslate(self.showView.transform, -10,0);
+            break;
+        case GWAnimationDisplacementRight://右移
+            self.showView.transform  = CGAffineTransformTranslate(self.showView.transform, 10,0);
+            break;
+        case GWAnimationZoomEnlargement: //放大
+            self.showView.transform = CGAffineTransformScale(self.showView.transform,1.5,1.5);
+            break;
+        case GWAnimationZoomOut://缩小
+            self.showView.transform = CGAffineTransformScale(self.showView.transform,0.5,0.5);
+            break;
+        case GWAnimationRotatingClockwise://顺时针
+            self.showView.transform = CGAffineTransformRotate(self.showView.transform, 90);
+            break;
+        case GWAnimationRotatingAnticlockwise://逆时针
+            self.showView.transform = CGAffineTransformRotate(self.showView.transform, -90);
+            break;
+</code></pre></div></div>
+
+<p>单独的使用并无什么乐趣，我们可以做个简单的动画如下图所示:
+<img src="http://upload-images.jianshu.io/upload_images/1120896-645466528185f9e9.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/240" alt="形变.gif" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[UIView animateWithDuration:1 animations:^{
+                self.showView.transform = CGAffineTransformMakeScale(1.5,1.5);
+     } completion:^(BOOL finished) {
+                [UIView animateWithDuration:1 animations:^{
+                    self.showView.transform = CGAffineTransformScale(self.showView.transform,0.5,0.5);
+                    self.showView.transform = CGAffineTransformRotate(self.showView.transform, 180);
+                } completion:^(BOOL finished) {
+                    [UIView animateWithDuration:1 animations:^{
+                        self.showView.transform = CGAffineTransformScale(self.showView.transform,2,2);
+                        self.showView.transform = CGAffineTransformRotate(self.showView.transform, -180);
+                    } completion:^(BOOL finished) {
+                    }];
+                }];
+            }];
+</code></pre></div></div>
+
+<p>DEMO:
+https://github.com/yanggenwei/GWAnimation/tree/master</p>
+
+<p>&lt;/small&gt;</p>
+
+
+  </article>
+  <p class="post-info">
+  本文由 <a href="/">杨根威</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为:2017-12-27</p>
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key=/%E5%8A%A8%E7%94%BB/2017/12/27/Animation-deformation data-title=iOS中的形变动画 data-url=Your motto//%E5%8A%A8%E7%94%BB/2017/12/27/Animation-deformation.html></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"pawpaw"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	@2015 Pithy Theme by 杨根威.
+</footer>
+
+    
+  </body>
+
+</html>

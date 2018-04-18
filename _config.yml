@@ -1,41 +1,15 @@
-# ----------- CONFIGURABLE START -----------
-title:            "Weigel |iOS开发者 | 独立游戏开发者 "
-description:      "欢迎来到 Weigel「小世界」感受来自我的分享。"
-url:              www.yangenwei.com # 域名
-signoff:          "Weigel" # Your name
-facebook_appid:   #
-google_analytics: #
-share:            true 
-# 分页
-paginate: 9
-paginate_path: "liberxuepage:num"
-gems: [jekyll-paginate]
-links:
-  - name:         首页
-    url:          /
-    external:     false
-  - name:         技术
-    url:          /technology
-    external:     false
-  - name:         书籍
-    url:          /book
-    external:     false
-  - name:         归档
-    url:          /archives
-    external:     false
-  - name:         项目
-    url:          /project
-    external:     false
-  - name:         标签
-    url:          /tags
-    external:     false
-  - name:         关于
-    url:          /about
-    external:     false
-# ------------ CONFIGURABLE END ------------
+# Site settings
+title: 杨根威的博客
+motto: 生于偶然 立于价值
+email: 324097191@qq.com
+description: > # this means to ignore newlines until "baseurl:"
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://www.yanggenwei.com" # the base hostname & protocol for your site
+twitter_username:
+github_username:  yanggenwei
 
-#permalink:        /:categories/:title.html
-permalink: /:year/:month/:day/:title.html
-defaults:
-  - values:
-      layout: "default"
+# Build settings
+markdown: kramdown

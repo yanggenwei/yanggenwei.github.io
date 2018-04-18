@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>Swift - 数组和集合</title>
+  <meta name="description" content="在Swift中仍然保留了OC中的三种集合类型:Array:数组是有序的值集合。Set:集合是惟一值的无序集合。Dictionary:字典是键值关联的无序集合。">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/swift/2018/01/13/swiftStringAndCharacter-2.html">
+  <link rel="alternate" type="application/atom+xml" title="Your awesome title" href="http://localhost:4000/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index.html">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive.html">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category.html">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about.html">about</a>
+				</li>			
+			
+		</div>
+		<div class="description"> Your motto </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/jekyll" title="Github">
+					<img width="19px" height="19px" src="/images/github.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="/feed.xml" title="RSS">
+					<img width="19px" height="19px" src="/images/rss.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/jekyllrb" title="Twitter">
+					<img width="19px" height="19px" src="/images/twitter.png"/>
+				</a>
+			</li>
+		</ul>		
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+  <br>
+  <header class="post-header">
+    <h1 class="post-title">Swift - 数组和集合</h1>
+    <p class="post-meta">Jan 13, 2018</p>
+  </header>
+
+  <article class="post-content">
+    <p>在Swift中仍然保留了OC中的三种集合类型:
+Array:数组是有序的值集合。
+Set:集合是惟一值的无序集合。
+Dictionary:字典是键值关联的无序集合。
+<img src="http://upload-images.jianshu.io/upload_images/1120896-0bda4fc9895f9fc2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/640" alt="CollectionTypes.png" /></p>
+
+<blockquote>
+  <p>Arrays, sets, and dictionaries in Swift are always clear about the types of values and keys that they can store. This means that you cannot insert a value of the wrong type into a collection by mistake. It also means you can be confident about the type of values you will retrieve from a collection.
+在Swift中，数组、集合和字典的值得数据类型很明确。这意味着您不能将错误类型的值插入到集合中。
+它还意味着您可以对从集合中检索到的值类型有信心。</p>
+</blockquote>
+
+<blockquote>
+  <p>Swift’s array, set, and dictionary types are implemented as generic collections.
+Swift的数组、集合和字典类型被实现为泛型集合。</p>
+</blockquote>
+
+<blockquote>
+  <p>If you create an array, a set, or a dictionary, and assign it to a variable, the collection that is created will be mutable. This means that you can change (or mutate) the collection after it’s created by adding, removing, or changing items in the collection. If you assign an array, a set, or a dictionary to a constant, that collection is immutable, and its size and contents cannot be changed.
+如果您创建一个数组、一个集合或一个字典，并将其赋值给一个变量，那么所创建的集合将是可变的。这意味着您可以通过在集合中添加、删除或更改项目来更改(或更改)集合。如果您将数组、集合或字典赋值给常量，那么该集合是不可变的，它的大小和内容不能被更改。</p>
+</blockquote>
+
+<p>看到了官网对于Swift中集合的各种特性解释，接下来我们进入实践阶段,来验证它是否是这样的。</p>
+<h1 id="arrays">Arrays</h1>
+<h2 id="arrays的初始化">Arrays的初始化</h2>
+<p>在创建之初,我们首先要想好,是需要可变的还是不可变的。
+一般来说我们使用不可变的会增加我们程序的安全性,避免了我们在编写程序时无意中添加或者删除了某值造成不好的效果,但系统却没有给出相应的提示。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let someNumber = [3,42,5]
+print(someNumber)
+结果:
+[3, 42, 5]
+</code></pre></div></div>
+<p>在这一段程序中,我们直接将3,42,5三个int类型的值加入到了someNumber数组中去了。
+在这过程中swift还需要动态的去判断值的类型。
+所以我们也可以直接指定它的数据类型:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let someNumber:[Int] = [3,42,5]
+</code></pre></div></div>
+<p>这样的一个好处就是我们可以很容易的去识别一个数组当中值得类型是否正确:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let someNumber:[Int] = [3,"Str",5]
+</code></pre></div></div>
+<p>当你这样写的时候,编译就会发生错误,因为”Str”是String类型并不是Int类型,程序就会及时的给予你提示。</p>
+
+<p>然而上面的方式其实是一种简写的方式,完整的写法应该如下所示:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let someInts = [Int](arrayLiteral: 3,3,5)
+print(someInts)
+
+let arrayInts = Array(arrayLiteral: "3","3","3")
+print(arrayInts)
+</code></pre></div></div>
+
+<p>我们再看其他的初始化方式:
+创建一个空的数组</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var someInts = [Int]()
+</code></pre></div></div>
+<p>这里要注意的就是[Int]它的数据类型不能省.不然会报错。
+因为Swift中严格的数据类型控制。可以设想,这里没有数据类型控制的话,那么我们在之后的追加元素的操作中,
+追加了不同的数据,而我们之前又没有显示的去设定它的数据类型，就会造成数据类型不可控的情况,这个在Swift并不被允许。
+你可以通过append去追加元素(当然了,首先你的数组是个变量,而不是常量):</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>someInts.append(3)
+</code></pre></div></div>
+<p>同时,如果你已经初始化完毕,那么你可以直接设定你的数组为空:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>someInts = []
+</code></pre></div></div>
+<p>你可能会有疑问,为什么一开始的时候不能这样设置为空呢？
+因为在这里虽然你设为了空,someInts的数据类型还是Int,你仍然是无法去添加其他类型的值的。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var someInts = [Int]()
+someInts.append(3)
+someInts = []
+someInts.append("string")  //error:Cannot convert value of type 'String' to expected argument type 'Int'
+print(someInts)
+</code></pre></div></div>
+
+<p>我们再看看其它的初始化方式:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let threeDoubles = Array(repeatElement(0.0, count: 3))
+print(threeDoubles)
+结果:
+[0.0, 0.0, 0.0]
+</code></pre></div></div>
+<p>其实从参数名称上我们就可以知道,我们创建了3个重复值用于数组的初始化。
+repeatElement方法中可以填写两个参数,一个是需要重复的数据,count表示重复多少次。
+我想,这是为了方便我们在特定情况下的初始化吧。</p>
+
+<p>嗯,继续看看别的初始化方式:
+我们在使用的时候,默认的数据的类型的确是确保了我们的数据类型安全,但同时也限制了我们编程的灵活性。
+在很多实际的运用场景中,一个数组集合中包含的并不可能只有一种数据类型的值,如果每一种都需要定义个数组来进行操作的话,也会增加开发成本。当然咯，这个还是根据具体的环境来决定成本的舍取性的。
+那么如何去定义一个什么类型都可以存的数组呢？</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let anyData = ["String",34,53] as [Any]
+print(anyData)
+结果:
+["String", 34, 53]
+</code></pre></div></div>
+<p>通过结果我们可以看到,这样定义的数组可以容纳其他类型的值。</p>
+
+<p>初始化我们大概了解了之后,我们还需要了解它的内置方法:</p>
+
+<h1 id="array的内置方法">Array的内置方法</h1>
+<h2 id="first-获取第一个元素">first 获取第一个元素</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var shopping_list = ["A","B","C","D"]
+print(shopping_list.first)
+结果:
+"A"
+</code></pre></div></div>
+
+<h2 id="first-where-根据判断条件返回结果">first where 根据判断条件返回结果</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var shopping_list = [53,4,2,45]
+let result = shopping_list.first(where: { (intResult) -&gt; Bool in
+    return intResult==54
+})
+print(result ?? 0)
+</code></pre></div></div>
+<p>这里的意思是如果第一个元素是54,那么返回正确结果,如果不是的话本来是应该返回nil的，但是我们给它做了判断,如果为nil,那么结果为0。</p>
+
+<h2 id="last-获取最后一个元素">last 获取最后一个元素</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var shopping_list = ["A","B","C","D"]
+print(shopping_list.last)
+结果:
+"D"
+</code></pre></div></div>
+
+<h2 id="count-数量">count 数量</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let shopping_list = [3,4,2,3]
+print("The shopping_list list contains \(shopping_list.count) items.")
+结果:
+The shopping_list list contains 4 items.
+</code></pre></div></div>
+<h2 id="isempty-判空">isEmpty 判空</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let shopping_list = [3,4,2,3]
+
+if shopping_list.isEmpty {
+    print("The shopping_list list is empty.")
+} else {
+    print("The shopping_list list is not empty.")
+}
+结果:
+The shopping_list list is not empty.
+</code></pre></div></div>
+
+<h2 id="contains-判断数组中是否包含某个元素">contains 判断数组中是否包含某个元素</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var shopping_list = ["A","B","C","D"]
+print(shopping_list.contains("C"))
+结果:
+true
+</code></pre></div></div>
+
+<h2 id="append-追加">append 追加</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var shopping_list = [1]
+shopping_list.append(4)
+print(shopping_list)
+结果:
+[1,4]
+</code></pre></div></div>
+
+<h2 id="insertnewelement--at--插入单个元素">insert(newElement:  at: ) 插入单个元素</h2>
+<p>将新元素插入到指定的位置,但不能插入到数组最后一位的下一位。</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var shopping_list = [1]
+shopping_list .insert(3, at: 1)
+print(shopping_list)
+结果:
+[1,3]
+</code></pre></div></div>
+
+<h2 id="insertcontentsofat-插入整个集合">insert(contentsOf:at:) 插入整个集合</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var shopping_list = [1,2]
+var otherShopping_list = [3,4,5]
+shopping_list.insert(contentsOf: otherShopping_list, at: 2)
+print(shopping_list)
+结果:
+[1,2,3,4,5]
+</code></pre></div></div>
+
+<h2 id="replacesubrangerange-with-collection-将某个范围的元素替换为指定的集合">replaceSubrange(Range<Int>, with: Collection) 将某个范围的元素替换为指定的集合</Int></h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var shopping_list = ["A","B","C","D"]
+shopping_list.replaceSubrange(0...1,with:["F","E"])
+print(shopping_list)
+结果:
+ ["F","E","C","D"]
+</code></pre></div></div>
+
+<h2 id="removeat-移除某个下标的元素">remove(at:) 移除某个下标的元素</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var shopping_list = [1,2,3,4]
+shopping_list.remove(at: 0)
+print(shopping_list)
+结果:
+[2,3,4]
+</code></pre></div></div>
+
+<h2 id="removefirstcount-从开始位置开始移除指定数量的元素">removeFirst(count) 从开始位置开始移除指定数量的元素</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var shopping_list = [1,2,3,4]
+shopping_list.removeFirst(2)
+print(shopping_list)
+结果:
+[3,4]
+</code></pre></div></div>
+
+<h2 id="removelastcount-从末尾位置开始向前移除指定数量的元素">removeLast(count) 从末尾位置开始向前移除指定数量的元素</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var shopping_list = [1,2,3,4]
+shopping_list.removeLast(2)
+print(shopping_list)
+</code></pre></div></div>
+
+<h2 id="removefirst-移除第一个元素">removeFirst() 移除第一个元素</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var shopping_list = [1,2,3,4]
+shopping_list.removeFirst()
+print(shopping_list)
+结果:
+[2,3,4]
+</code></pre></div></div>
+<h2 id="removelast-移除最后一个元素">removeLast() 移除最后一个元素</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var shopping_list = [1,2,3,4]
+shopping_list.removeLast()
+print(shopping_list)
+结果:
+[1,2,3]
+</code></pre></div></div>
+
+<h2 id="removesubrangerange-移除某个范围内的元素">removeSubrange(Range) 移除某个范围内的元素</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var shopping_list = [1,2,3,4]
+shopping_list.removeSubrange(0...1)
+print(shopping_list)
+结果:
+[3,4]
+</code></pre></div></div>
+<p>0…1 表示 [0,1] 的区间,即包含0和1的范围</p>
+
+<h2 id="removeall-移除所有">removeAll() 移除所有</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var shopping_list = [1,2,3,4]
+shopping_list. removeAll()
+print(shopping_list)
+结果:
+[]
+</code></pre></div></div>
+
+<blockquote>
+  <p>移除数组中全部元素，有一个可选参数，keepCapacity。如果keepCapacity = YES的话，那么数组移除元素后，其存储空间还是存在的，在此往里存储值，不需再给他分配存储空间了。如果keepCapacity=NO的话，那么数组的存储空间就会被回收掉。</p>
+</blockquote>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">shopping_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">shopping_list</span><span class="o">.</span> <span class="nf">removeAll</span><span class="p">(</span><span class="nv">keepCapacity</span><span class="p">:</span> <span class="kc">true</span><span class="p">)</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">shopping_list</span><span class="p">)</span>
+<span class="nv">结果</span><span class="p">:</span>
+<span class="p">[]</span>
+</code></pre></div></div>
+
+<h1 id="数组的遍历">数组的遍历</h1>
+<p>比较常见的就是for-loop遍历了。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var shopping_list = [1,2,3,4]
+for item in shopping_list {
+    print(item, terminator: "")
+}
+结果:
+1234
+</code></pre></div></div>
+
+<p>还有一种方式是枚举遍历法,我们有时也会称之为迭代器遍历</p>
+
+<p>官网中这样解释到:</p>
+<blockquote>
+  <p>If you need the integer index of each item as well as its value, use the enumerated() method to iterate over the array instead. For each item in the array, the enumerated() method returns a tuple composed of an integer and the item. The integers start at zero and count up by one for each item; if you enumerate over a whole array, these integers match the items’ indices. You can decompose the tuple into temporary constants or variables as part of the iteration:
+如果您需要这个项目的每一个值和索引，那么可以使用enumerated()方法来迭代该数组。对于数组中的每个项，enumerated()方法返回一个由一个整数和项组成的元组。整数从零开始，每一项都是一;如果您对整个数组进行枚举，那么这些整数将匹配项目的索引。您可以将元组分解为临时常量或变量，作为迭代的一部分:</p>
+</blockquote>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var shopping_list = ["A","B","C","D"]
+let enumerated_list = shopping_list.enumerated()
+for (index, value) in  enumerated_list {
+    print("Item \(index + 1): \(value)")
+}
+结果:
+Item 1: A
+Item 2: B
+Item 3: C
+Item 4: D
+</code></pre></div></div>
+<p>其中可以看到index就是它的索引,value是它的值。</p>
+
+<h2 id="sorted-排序">sorted 排序</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var shopping_list = [53,4,2,45]
+for item in shopping_list.sorted(){
+    print(item,terminator: " ")
+}
+结果:
+2 4 45 53 
+</code></pre></div></div>
+
+<h2 id="sorted-by-有条件的排序">sorted by 有条件的排序</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var shopping_list = [53,4,2,45]
+shopping_list = shopping_list.sorted { (old, new) -&gt; Bool in
+    return old&lt;new;
+}
+print(shopping_list)
+如果old&lt;new为升序:
+[2, 4, 45, 53]
+old&gt;new为降序:
+[53, 45, 4, 2]
+</code></pre></div></div>
+
+
+  </article>
+  <p class="post-info">
+  本文由 <a href="/">杨根威</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为:2018-01-13</p>
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key=/swift/2018/01/13/swiftStringAndCharacter 2 data-title=Swift - 数组和集合 data-url=Your motto//swift/2018/01/13/swiftStringAndCharacter-2.html></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"pawpaw"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	@2015 Pithy Theme by 杨根威.
+</footer>
+
+    
+  </body>
+
+</html>

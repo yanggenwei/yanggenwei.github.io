@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>    
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width initial-scale=1">
+
+  <title>Swift - 字符串和字符</title>
+  <meta name="description" content="  Swift的字符串类型与Foundation的NSString类连接。Foundation还扩展了字符串来公开由NSString定义的方法。这意味着，如果您导入Foundation，您可以在字符串中访问这些NSString方法，而不需要进行强制转换。">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/swift/2018/01/03/swiftStringAndCharacter.html">
+  <link rel="alternate" type="application/atom+xml" title="Your awesome title" href="http://localhost:4000/feed.xml" />
+  <script src="/scripts/jquery-1.11.2.min.js"></script>
+  <script src="/scripts/pithy.js"></script>
+</head>
+
+
+  <body>
+    <header class="header">
+	<div class="header-container">
+		<div class="nav">
+			
+				<li>
+					<a href="/index.html">home</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/archive.html">archive</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/category.html">category</a>
+				</li>			
+			
+			
+				<li>
+					<a href="/about.html">about</a>
+				</li>			
+			
+		</div>
+		<div class="description"> Your motto </div>		
+		<ul class="social-links">
+			<li>
+				<a href="https://github.com/jekyll" title="Github">
+					<img width="19px" height="19px" src="/images/github.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="/feed.xml" title="RSS">
+					<img width="19px" height="19px" src="/images/rss.png"/>
+				</a>
+			</li>
+			<li>
+				<a href="https://twitter.com/jekyllrb" title="Twitter">
+					<img width="19px" height="19px" src="/images/twitter.png"/>
+				</a>
+			</li>
+		</ul>		
+	</div>
+</header>
+
+    <br>
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="post">
+  <br>
+  <header class="post-header">
+    <h1 class="post-title">Swift - 字符串和字符</h1>
+    <p class="post-meta">Jan 3, 2018</p>
+  </header>
+
+  <article class="post-content">
+    <blockquote>
+  <p>Swift的字符串类型与Foundation的NSString类连接。Foundation还扩展了字符串来公开由NSString定义的方法。这意味着，如果您导入Foundation，您可以在字符串中访问这些NSString方法，而不需要进行强制转换。</p>
+</blockquote>
+
+<h1 id="单行字符串">单行字符串</h1>
+<p><code class="highlighter-rouge"> let someString = "Some stirng" </code></p>
+<h1 id="多行文本">多行文本</h1>
+<p>多行文本使用 `  “”” 内容 “”” `  没错，就是三个引号开头，三个引号结尾。
+多行字符串文字包含了它的起始引号和结束引号之间的所有行</p>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">let</span> <span class="nv">lyric</span> <span class="o">=</span> <span class="s">"""
+那是你的眼神，明亮又美丽
+啊啊啊~~~
+"""</span>
+<span class="nf">print</span><span class="p">(</span><span class="n">lyric</span><span class="p">)</span>
+
+<span class="nv">结果</span><span class="p">:</span>
+<span class="n">那是你的眼神</span><span class="err">，</span><span class="n">明亮又美丽</span>
+<span class="n">啊啊啊</span><span class="o">~~~</span>
+</code></pre></div></div>
+<p>好吧，这个我一开始以为只是在格式上可以写成多行，没想到结果就是多行，效果等同于\n,而且这样写法更加方便。
+还有就是当我们想在多行文本中想控制某行不换行，可以选择在某行的末尾写上 \ 那么下一行就不会换行了</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">lyric</span> <span class="o">=</span> <span class="s">"""
+那是你的眼神，明亮又美丽</span><span class="err">\</span><span class="s">
+啊啊啊~~~
+"""</span>
+
+<span class="nv">结果</span><span class="p">:</span>
+<span class="n">那是你的眼神</span><span class="err">，</span><span class="n">明亮又美丽啊啊啊</span><span class="o">~~~</span>
+</code></pre></div></div>
+
+<p>在多行文本中，我们可以在结束引号的前面设定空格，来限定整段文本的缩进:</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">lyric</span> <span class="o">=</span> <span class="s">"""
+  那是你的眼神，明亮又美丽
+  啊啊啊~~~
+
+  """</span>
+</code></pre></div></div>
+<p>上面例子中,我们在最后”"”前设定了2个空格,那么之前的文本必须都是缩进2个空格如果你这样写:</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">lyric</span> <span class="o">=</span> <span class="s">"""
+那是你的眼神，明亮又美丽
+啊啊啊~~~
+
+  """</span>
+</code></pre></div></div>
+<p>你会发现会报错<code class="highlighter-rouge">Insufficient indentation of line in multi-line string literal 多行字符串文字的行缩不足</code></p>
+
+<h2 id="字符串中特殊字符">字符串中特殊字符</h2>
+<p>\(反斜杠)</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let test = "====\\===="
+结果:
+====\====
+</code></pre></div></div>
+
+<p>\t(水平选项卡)</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let test = "\t1\t2\t3"
+结果:
+	1	2	3
+</code></pre></div></div>
+
+<p>\n(换行符)</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let test = "\n1\n2\n3"
+结果:
+
+1
+2
+3
+</code></pre></div></div>
+
+<p>\r(回车)</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let test = "\r1\r2\r3"
+结果:
+
+1
+2
+3
+</code></pre></div></div>
+
+<p>从结果来看,\r和\n似乎没有区别,但既然存在即表示肯定是有区别的</p>
+<blockquote>
+  <p>‘\r’是回车，\r 使光标到行首. ‘\n’是换行，\n 使光标下移一格,通常敲一个回车键，即是回车，又是换行（\r\n）。Unix中每行结尾只有“<换行>”，即“\n”；Windows中每行结尾是“<换行><回车>”，即“\n\r”；Mac中每行结尾是“<回车>”</回车></回车></换行></换行></p>
+</blockquote>
+
+<p>一般遇到的情况是在解析Json字符串,网页数据,文件信息的时候会出现不同的应对.</p>
+
+<p>"(双引号)</p>
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">let</span> <span class="nv">test</span> <span class="o">=</span> <span class="s">"</span><span class="se">\"</span><span class="s">认识自己的无知是认识世界的最可靠的方法。——《随笔集》</span><span class="se">\"</span><span class="s">"</span>
+<span class="nv">结果</span><span class="p">:</span>
+<span class="s">"认识自己的无知是认识世界的最可靠的方法。——《随笔集》"</span>
+</code></pre></div></div>
+<p>'(单引号)</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let test = "\'曦\'"
+结果:
+'曦'
+</code></pre></div></div>
+<p>Unicode 字符就直接采用官网的了</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let dollarSign = "\u{24}"        // $,  Unicode scalar U+0024
+let blackHeart = "\u{2665}"      // ♥,  Unicode scalar U+2665
+let sparklingHeart = "\u{1F496}" // 💖, Unicode scalar U+1F496
+
+结果:
+$ ♥ 💖
+</code></pre></div></div>
+
+<h2 id="空字符串">空字符串</h2>
+<p>我们来看一下如果定义一个空字符串:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var emptyString = ""
+或者
+var emptyString = String()
+</code></pre></div></div>
+
+<p>判断字符串是否为空:</p>
+<blockquote>
+  <p>isEmpty 方法</p>
+</blockquote>
+
+<div class="language-swift highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">var</span> <span class="nv">emptyString</span> <span class="o">=</span> <span class="s">""</span>
+
+<span class="k">if</span> <span class="n">emptyString</span><span class="o">.</span><span class="n">isEmpty</span> <span class="p">{</span>
+  <span class="nf">print</span><span class="p">(</span><span class="s">"emptyStirng is empty"</span><span class="p">)</span>
+<span class="p">}</span>
+
+</code></pre></div></div>
+
+<h2 id="字符串可变性">字符串可变性</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var variableString = "Horse"
+variableString += " and carriage"
+
+结果:
+variableStrin:Horse and carriage
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let constantString = "Highlander"
+constantString += " and another Highlander"
+发生错误。
+Left side of mutating operator isn't mutable: 'constantString' is a 'let' constant
+变异操作符的左侧是不可改变的:“常量字符串”是一个“let”常量
+</code></pre></div></div>
+<p>简单来说就是variableString 是变量,可以通过+操作符来追加字符串, constantString 为常量,不可修改。</p>
+
+<p>这个我不得不吐槽一下,官网的这个解释,不就是常量不可修改嘛,说什么可变性。</p>
+
+<h2 id="字符串是值类型">字符串是值类型</h2>
+<blockquote>
+  <p>If you create a new String value, that String value is copied when it’s passed to a function or method, or when it’s assigned to a constant or variable. In each case, a new copy of the existing String value is created, and the new copy is passed or assigned, not the original version.
+如果您创建一个新的字符串值，那么当它传递给一个函数或方法时，或者当它被分配给一个常量或变量时,该字符串值将被复制。
+在不同情况下，都会创建一个现有字符串值的新副本，并分配新副本，而不是原始版本。</p>
+</blockquote>
+
+<blockquote>
+  <p>Swift’s copy-by-default String behavior ensures that when a function or method passes you a String value, it’s clear that you own that exact String value, regardless of where it came from. You can be confident that the string you are passed won’t be modified unless you modify it yourself.
+Swift的 copy-by-default 行为可以确保当函数或方法传递给你一个字符串值时，不管它是从哪里来的，你都能清楚地知道你的值是什么。您可以确信，您所传递的字符串不会被修改，除非您自己修改它。</p>
+</blockquote>
+
+<blockquote>
+  <p>Behind the scenes, Swift’s compiler optimizes string usage so that actual copying takes place only when absolutely necessary. This means you always get great performance when working with strings as value types.
+在后台,Swift的编译器优化了字符串的使用，所以只有在绝对必要的情况下才会进行实际的复制。这意味着在使用字符串作为值类型时，您总是获得很好的性能。</p>
+</blockquote>
+
+<p>这个就有别于OC了，OC中有明确的分为NSString(不可变)和NSMutableString(可变),swift中只有这么一种了，通过对此的优化更加确保了数据的安全。</p>
+
+<h1 id="字符">字符</h1>
+<p>定义一个字符(Character)类型的常量charA</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let charA:Character = "A"
+print("charA:\(charA)")
+结果:
+charA:A
+</code></pre></div></div>
+
+<p>您可以通过使用for循环遍历字符串来访问字符串的单个字符值:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let character = ""
+let str = "窗外的麻雀"
+for character in str {
+    print(character)
+}
+结果:
+窗
+外
+的
+麻
+雀
+</code></pre></div></div>
+
+<p>创建一个字符值数组:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let catCharacters: [Character] = ["C", "a", "t", "!", "🐱"]
+print(catCharacters)
+结果:
+["C", "a", "t", "!", "🐱"]
+</code></pre></div></div>
+
+<p>可以通过<code class="highlighter-rouge">String(字符数组) </code>来将字符数组转换成字符串</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let catCharacters: [Character] = ["C", "a", "t", "!", "🐱"]
+let catString = String(catCharacters)
+print(catString)
+结果:
+Cat!🐱
+</code></pre></div></div>
+
+<p>字符串的连接:
+我们可以用 <code class="highlighter-rouge">+</code> 操作符连接字符串</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let string1 = "hello"
+let string2 = " there"
+var welcome = string1 + string2
+print("welcome \(welcome)")
+结果:
+welcome hello there
+</code></pre></div></div>
+
+<p>除了<code class="highlighter-rouge">+</code>操作符之外,还有append方法</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let string1 = "hello"
+let string2 = " there"
+var welcome = string1 + string2
+
+let exclamationMark: Character = "!"
+welcome.append(exclamationMark)
+print("welcome \(welcome)")
+结果:
+welcome hello there!
+</code></pre></div></div>
+<p>append是将字符串追加到原本字符串的末尾</p>
+
+<p>以上的添加方法是通过连接两个字符串的值形成一个新的值
+而在有的时候我们其实只需要临时的展示而已，不需要去改变原有的值,那么这个时候其实只需要这样做就可以了:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let badStart = """
+one
+two
+"""
+let end = """
+three
+"""
+print(badStart + end)
+print(badStart)
+
+结果:
+one
+twothree
+
+one
+two
+</code></pre></div></div>
+
+<p>可以看到我们在输出print中将其相加,虽然显示了，但其实badStart的结果并没有改变。</p>
+
+<h2 id="字符串的插值">字符串的插值</h2>
+<p>在使用字符串的时候，我们可能需要利用其它的变量来改变我们目前的数据,而这个时候我们可以使用 <code class="highlighter-rouge">\(value)</code> 来将我们需要的值</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let multiplier = 3
+let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
+
+结果:
+3 times 2.5 is 7.5
+</code></pre></div></div>
+<p>当然了，这个也不是万能，它是不能将未转义的<code class="highlighter-rouge">\</code>直接放置于<code class="highlighter-rouge">()</code>中的:
+错误的方式</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let message = "\(\)"
+print(message)
+
+let message = "\(\')"
+print(message)
+
+</code></pre></div></div>
+
+<p>正确的方式是这样的:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let message = "\("\'")"
+print(message)
+结果:
+'
+</code></pre></div></div>
+
+<h2 id="计算字符的个数">计算字符的个数</h2>
+<p>计算字符的个数是我们比较常用的方法<code class="highlighter-rouge">count</code></p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let unusualMenagerie = "Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪"
+print("unusualMenagerie has \(unusualMenagerie.count) characters")
+结果:
+unusualMenagerie has 40 characters
+</code></pre></div></div>
+
+<p>当然了,count并不总是能够计算清楚我们的字符个数:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var word = "cafe"
+print("the number of characters in \(word) is \(word.count)")
+这个计算结果是4
+word += "\u{301}"  
+print("the number of characters in \(word) is \(word.count)")
+当我们计算的会发现结果仍然是4
+</code></pre></div></div>
+<p>这是为什么呢?
+因为swift中的字符串运用了<code class="highlighter-rouge">扩展字元簇（Extended Grapheme Clusters)</code></p>
+
+<p>扩展字元簇可以由多个Unicode标量组成。
+<strong>这意味着不同的字符和相同字符的不同表示可以要求不同的内存数量来存储。
+因此，Swift中的字符不会在字符串的表示中占用相同数量的内存。</strong>
+结果，字符串中的字符数无法计算.
+如果您使用的是特别长的字符串值，请注意，count属性必须遍历整个字符串中的Unicode标量，以便确定该字符串的字符。</p>
+
+<p>比如：字母é可以是一个单独的Unicode scalar：U+00E9，也可以是多个纯量的组合：U+0065U+0301 （其中U+0065就是字母e）。在Swift中，这两种情况都认为是一个字符，因此获取字符串长度的时候(用全局函数count())，返回的值是相同的，这意味着字符串的改变并不一定意味着其长度发生变化。</p>
+
+<p>count属性返回的字符数并不总是与包含相同字符的NSString的长度属性相同。
+NSString的length是基于字符串的utf-16表示的16位代码单元的数量，而不是字符串中Unicode扩展的grapheme集群的数量</p>
+
+<h2 id="字符串索引">字符串索引</h2>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let greeting = "Guten Tag!"
+//字符串中的开头字母
+print(greeting[greeting.startIndex])
+//index()表示获取字符串中某个下标的元素,before意味着获取最后一位的之前的下标
+//endIndex表示字符串最后一位
+print(greeting[greeting.index(before: greeting.endIndex)])
+//after表示获取某个下标之后
+print(greeting[greeting.index(after: greeting.startIndex)])
+//这个方法表示以startIndex下标开始，偏移7位
+let index = greeting.index(greeting.startIndex, offsetBy: 7)
+print(greeting[index])
+结果:
+G
+!
+u
+a
+</code></pre></div></div>
+
+<p>使用索引属性来访问字符串中各个字符的所有索引:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>for index in greeting.indices {
+    print("\(greeting[index]) ", terminator: "")
+}
+结果:
+G u t e n   T a g ! 
+</code></pre></div></div>
+<p>这里的terminator是print方法中参数,默认是添加换行符\n</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let greeting = "Guten Tag!"
+
+for index in greeting.indices {
+    print("\(greeting[index]) ", terminator: "\n")
+}
+G 
+u 
+t 
+e 
+n 
+  
+T 
+a 
+g 
+! 
+</code></pre></div></div>
+<p>感觉跟print没有区别吧。</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>let greeting = "Guten Tag!"
+
+for index in greeting.indices {
+    print("\(greeting[index]) ", terminator: "1")
+}
+结果:
+G 1u 1t 1e 1n 1  1T 1a 1g 1! 1
+</code></pre></div></div>
+<p>这个其实就是在每次获取单个字符之后添加一个字符。</p>
+
+<h1 id="字符串的插入和删除">字符串的插入和删除</h1>
+
+<h2 id="插入">插入</h2>
+<blockquote>
+  <p>insert(value,at:index)</p>
+</blockquote>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>var welcome = "hello"
+welcome.insert("!", at:welcome.endIndex)
+print(welcome)
+结果:
+hello!
+
+var welcome = "hello!"
+welcome.insert(contentsOf: " world", at: welcome.index(before: welcome.endIndex))
+print(welcome)
+结果:
+hello world!
+</code></pre></div></div>
+
+<h2 id="移除">移除</h2>
+<blockquote>
+  <p>remove(at:index)
+根据下标进行移除</p>
+</blockquote>
+
+<blockquote>
+  <p>removeSubrange
+根据提供的范围进行移除
+```
+var welcome = “hello!”
+welcome.remove(at: welcome.index(before: welcome.endIndex))
+print(welcome)
+结果:
+hello</p>
+</blockquote>
+
+<p>var welcome = “hello world”
+//空格的位置 - 末尾
+let range = welcome.index(welcome.endIndex, offsetBy: -6)..&lt;welcome.endIndex
+welcome.removeSubrange(range)
+print(welcome)
+结果:
+hello
+```
+后续更新,敬请期待…</p>
+
+
+  </article>
+  <p class="post-info">
+  本文由 <a href="/">杨根威</a> 创作，采用 <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="external nofollow">知识共享署名4.0</a> 国际许可协议进行许可<br>本站文章除注明转载/出处外，均为本站原创或翻译，转载前请务必署名<br>最后编辑时间为:2018-01-03</p>
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key=/swift/2018/01/03/swiftStringAndCharacter data-title=Swift - 字符串和字符 data-url=Your motto//swift/2018/01/03/swiftStringAndCharacter.html></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"pawpaw"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+</div>
+
+      </div>
+    </div>
+    
+    <footer class="footer">
+  <div id="gotop">^</div>
+  <br>
+	@2015 Pithy Theme by 杨根威.
+</footer>
+
+    
+  </body>
+
+</html>
