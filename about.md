@@ -3,9 +3,27 @@ layout: page
 title: About
 permalink: /about/
 ---
+ 
+我呢？
+很平凡吧。
 
-This is the base Jekyll theme. You can find out more info about customizing your Jekyll theme, as well as basic Jekyll usage documentation at [jekyllrb.com](http://jekyllrb.com/)
+从上学开始
+vb 第一次接触编程,实现过各种小程序,小游戏
+C# 校园软件大赛做过俄罗斯方块游戏,还得了技术一等奖,为学校做过学生管理系统,投入实际使用
+ASP.NET 带着小团队做过学校的毕业论文网站 其中也负责DIV+CSS的工作,也投入了实际使用
+Java 将原来的毕业论文网站 用Java重新做了一遍
 
-You can find the source code for the Jekyll new theme at: [github.com/jglovier/jekyll-new](https://github.com/jglovier/jekyll-new)
+实习
+Android 在南京的一家企业做过吉乐福订餐系统 貌似当时做了没多久吉乐福就被收购了，项目也就黄了。
 
-You can find the source code for Jekyll at [github.com/jekyll/jekyll](https://github.com/jekyll/jekyll)
+工作
+被学校分配到上海的一家上市公司,说是做开发,却做了大半年的文档查错。后来又负责了一端时间的Oracle数据库开发。由于对日工作，眼力和耐心倒是锻炼的很好,也算是人生的一段经历吧。
+
+后来去了深圳(毕竟没去过太远的地方,世界那么大,我想去看看),去深圳找了份iOS的工作,后来又做了iOS讲师,说实话，这段时间还是很充实的,天天辅导学生到十一二点,回去之后备课又到两三点,真的是感觉自己很有梦想感. 后来发生了点事情,心灰意冷,而且离家里面太远,所以又回到了上海找了在胖猫宝负责iOS客户端的工作。
+
+在胖猫宝如今已经快两年了,也算是第一个这么稳定的工作吧。由于是独立负责项目开发,从项目的建立到上架发布,全部自己来，中间也有不少坑，不过如今都填完了。现在更希望去将产品不断完善，使得产品更加完美吧。
+
+整体来说,没啥出彩的地方,前后端都接触过,算是比较正统的程序员吧。如今只希望设计一款自己的产品,并且努力在实现。 如今三年有余,自己也不知不觉从小白快踏入了大白的程度了,更希望自己能将全部的热情投入到一件很有趣的事情上面，并专注于此。
+
+
+
