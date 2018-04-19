@@ -369,7 +369,7 @@ As mentioned above, subclasses do not inherit their superclass initializers by d
 >* However, structure instances are always passed by value, and class instances are always passed by reference. This means that they are suited to different kinds of tasks. As you consider the data constructs and functionality that you need for a project, decide whether each data construct should be defined as a class or as a structure.
 但是，结构实例总是通过值传递，而类实例总是通过引用传递。这意味着它们适用于不同类型的任务。当您考虑一个项目需要的数据结构和功能时，决定每个数据结构是否应该被定义为一个类或一个结构。
 
-As a general guideline, consider creating a structure when one or more of these conditions apply:
+>* As a general guideline, consider creating a structure when one or more of these conditions apply:
 指导方针，考虑在一个或多个条件适用的情况下创建一个结构:
 
 >* The structure’s primary purpose is to encapsulate a few relatively simple data values.
